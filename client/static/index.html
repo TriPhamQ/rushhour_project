@@ -5,6 +5,7 @@
 		<title>Rush Hour</title>
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
 		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+		<link rel="icon" href="http://media1.break.com/dnet/media/2011/9/8/24447907-d214-402c-862d-b80d67262318.jpeg">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 		<!-- <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular-route.min.js"></script> -->
@@ -23,9 +24,13 @@
 				<div class="nav-wrapper">
 					<a href="#" class="brand-logo center">Rush Hour</a>
 					<ul class="left">
-						<li><a href="#!/dashboard">Dashboard</a></li>
+						<li><a href="#!/home">Home</a></li>
+						<li ng-show="currentuser"><a href="#!/dashboard">Dashboard</a></li>
 						<li><a href="#!"></a></li>
-						<li><a href="#!"></a></li>
+					</ul>
+					<ul class="right">
+						<li ng-show="!currentuser"><a href="#!/log-in">Login</a></li>
+						<li ng-show="currentuser"><a href="">Welcome, {{currentuser}}!</a></li>
 						<li><a href="#!"></a></li>
 					</ul>
 				</div>

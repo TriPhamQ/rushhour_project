@@ -50,7 +50,7 @@ myApp.controller('logregController', ['$scope', 'usersFactory', '$location', '$r
         $rootScope.token = null;
         $rootScope.currentuser = null;
         $rootScope.currentuser_id = null;
-        $location.url('/');
+        $location.url('/log-in');
     };
 
     console.log("ROOT USER IS", $rootScope.currentuser);
