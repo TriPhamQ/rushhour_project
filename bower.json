@@ -1,0 +1,23 @@
+{
+  "name": "rushhour",
+  "description": "",
+  "main": "server.js",
+  "authors": [
+    "TriPhamQ <phamqtri1992@gmail.com>"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/TriPhamQ/rushhour",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "^1.6.1",
+    "angular-route": "^1.6.1",
+    "bcrypt": "*",
+    "angular-cookies": "^1.6.1"
+  }
+}

@@ -1,0 +1,30 @@
+<div class="row">
+	<p>Registration:</p>
+	<div class="input-field col s6">
+		<input type="text" name="name" value="" placeholder="Name" ng-model="newUser.name">
+	</div>
+	<div class="input-field col s6">
+		<input type="text" name="email" value="" placeholder="Email" ng-model="newUser.email">
+	</div>
+	<div class="input-field col s6">
+		<input type="password" name="password" value="" placeholder="Password" ng-model="newUser.password">
+	</div>
+	<div class="input-field col s6">
+		<input type="password" name="password_confirm" value="" placeholder="Please confirm password" ng-model="newUser.password_confirm">
+	</div>
+	<p ng-bind="error"></p>
+	<button class="btn waves-effect waves-light" type="button" name="button" ng-click="regUser()">Register</button>
+</div>
+<div class="row">
+	<p>Login:</p>
+	<div class="input-field col s6">
+		<input type="text" name="email" value="" placeholder="Email" ng-model="login.email">
+	</div>
+	<div class="input-field col s6">
+		<input type="password" name="password" value="" placeholder="Password" ng-model="login.password">
+	</div>
+	<button class="btn waves-effect waves-light" type="button" name="button" ng-click="logUser()">Login</button>
+</div>
+<div class="row">
+	<button class="btn waves-effect waves-light" type="button" name="button" ng-click="logOut()">Log Out</button>
+</div>
