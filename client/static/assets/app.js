@@ -1,4 +1,4 @@
-var myApp = angular.module('app', ['ngRoute', 'ngCookies']);
+var myApp = angular.module('app', ['ngRoute', 'ngCookies', 'ngAnimate']);
 
 myApp.config(function ($routeProvider) {
 	$routeProvider
@@ -22,3 +22,18 @@ myApp.config(function ($routeProvider) {
 		redirectTo: '/home'
 	});
 });
+
+myApp.directive('ngEnter', function() {
+        return function(scope, element, attrs) {
+            element.bind("keydown keypress", function(event) {
+                if(event.which === 13) {
+                    scope.$apply(function(){
+                        scope.$eval(attrs.ngEnter, {'event': event});
+                    });
+
+                    event.preventDefault();
+                }
+            });
+        };
+    });
+

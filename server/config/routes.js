@@ -1,5 +1,6 @@
 console.log("Routes...");
 var users = require('../controllers/users.js');
+var maps = require('../controllers/maps.js');
 
 module.exports = function(app){
     app.get('/', function (req, res) {
@@ -11,4 +12,7 @@ module.exports = function(app){
     app.post('/log', function (req, res) {
         users.login(req, res);
     });
+    app.post('/validate_address', function(req, res){
+    	maps.validateAddress(req, res);
+    })
 };

@@ -1,9 +1,29 @@
 myApp.controller('logregController', ['$scope', 'usersFactory', '$location', '$rootScope', '$cookies', function ($scope, usersFactory, $location, $rootScope, $cookies) {
     console.log('logregController loaded');
 	$scope.error = undefined;
+    $scope.nextval = ['address', 'name'];
+    $scope.selection = $scope.nextval[0];
 
     $scope.startReg = function(){
-        $location.url('/rush_hour/registration')
+        $location.url('/rush_hour/registration');
+    }
+    $scope.next = function(){
+        if ($scope.selection == 'address'){
+            usersFactory.addressValidation($scope.item, function(output){
+                if (output.status == 200){
+                    console.log('results');
+                    console.log(output.data[0].formatted_address);
+                    $scope.registrationDetails = {};
+                    $scope.registrationDetails.address = output.data[0].formatted_address;
+                    $scope.item.address = null;
+                    $scope.selection = $scope.items[1];
+                } else {
+                    console.log(output.status);
+                }
+            })
+        } else {
+            console.log('moving on');
+        }
     }
 
 	$scope.regUser = function () {
