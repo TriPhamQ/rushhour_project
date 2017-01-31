@@ -25,7 +25,9 @@ myApp.factory('usersFactory', ['$http', '$cookies', '$rootScope', function ($htt
 		});
 	};
 	factory.addressValidation = function(input, callback){
+		console.log('input'+input);
 		$http.post('/validate_address', input).then(function(output){
+			console.log(output);
 			callback(output);
 		})
 	}

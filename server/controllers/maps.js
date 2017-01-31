@@ -8,6 +8,7 @@ var googleMapsClient = require('@google/maps').createClient({
 module.exports = (function(){
 	return {
 		validateAddress:function(req, res){
+			console.log(req.body.address);
 			googleMapsClient.geocode({
 				address: req.body.address
 			}, function(error, response){

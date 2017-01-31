@@ -1,22 +1,26 @@
 myApp.controller('logregController', ['$scope', 'usersFactory', '$location', '$rootScope', '$cookies', function ($scope, usersFactory, $location, $rootScope, $cookies) {
     console.log('logregController loaded');
 	$scope.error = undefined;
-    $scope.nextval = ['address', 'name'];
-    $scope.selection = $scope.nextval[0];
+    $scope.nextval = {};
+    $scope.nextval.address = true;
 
     $scope.startReg = function(){
         $location.url('/rush_hour/registration');
     }
-    $scope.next = function(){
+    $scope.next = function(ax){
+        console.log(ax);
+        console.log($scope.item);
         if ($scope.selection == 'address'){
             usersFactory.addressValidation($scope.item, function(output){
+                console.log(output);
                 if (output.status == 200){
                     console.log('results');
+                    console.log(output);
                     console.log(output.data[0].formatted_address);
-                    $scope.registrationDetails = {};
-                    $scope.registrationDetails.address = output.data[0].formatted_address;
-                    $scope.item.address = null;
-                    $scope.selection = $scope.items[1];
+                    // $scope.registrationDetails = {};
+                    // $scope.registrationDetails.address = output.data[0].formatted_address;
+                    // $scope.item.address = null;
+                    // $scope.selection = $scope.items[1];
                 } else {
                     console.log(output.status);
                 }
