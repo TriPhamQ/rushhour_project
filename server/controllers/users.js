@@ -1,5 +1,5 @@
 console.log('users controller');
-var bcrypt = require('bcrypt');
+var bcrypt = require('bcryptjs');
 var jwt = require("jsonwebtoken");
 var mongoose = require('mongoose');
 var User = mongoose.model('User');
@@ -23,6 +23,8 @@ module.exports = (function () {
 					User.create(req.body, function (err, results) {
 						if (err) {
 							console.log(err);
+							console.log("Wrong email input...");
+							res.json({error: "Please enter a valid email address!"});
 						}
 						else {
 							console.log("New user created");
