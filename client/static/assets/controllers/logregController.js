@@ -4,6 +4,8 @@ myApp.controller('logregController', ['$scope', 'usersFactory', '$location', '$r
     $scope.nextval = {};
     $scope.nextval.address = true;
     $scope.nextval.name = false;
+    $scope.nextval.user = false;
+    $scope.registrationDetails = {};
 
     $scope.startReg = function(){
         $location.url('/rush_hour/registration');
@@ -16,9 +18,10 @@ myApp.controller('logregController', ['$scope', 'usersFactory', '$location', '$r
                 if (output.status == 200){
                     console.log('results');
                     console.log(output);
-                    console.log(output.data[0].formatted_address);
-                    $scope.registrationDetails = {};
                     $scope.registrationDetails.address = output.data[0].formatted_address;
+                    $scope.registrationDetails.coords = output.data[0].geometry.location;
+                    $scope.registrationDetails.placeId = output.data[0].place_id;
+                    console.log($scope.registrationDetails);
                     $scope.item.address = '';
                     $scope.nextval.address = false;
                     $scope.nextval.name = true;
@@ -26,8 +29,11 @@ myApp.controller('logregController', ['$scope', 'usersFactory', '$location', '$r
                     console.log(output.status);
                 }
             })
-        } else {
-            console.log('moving on');
+        } else if ($scope.nextval.name == true){
+            $scope.registrationDetails.name = ax;
+            console.log($scope.registrationDetails);
+            $scope.nextval.name = false;
+            $scope.nextval.user = true;
         }
     }
 
