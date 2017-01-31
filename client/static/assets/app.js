@@ -18,6 +18,10 @@ myApp.config(function ($routeProvider) {
 		templateUrl: 'partials/startreg.html',
 		controller: 'logregController'
 	})
+	.when('/businessDash', {
+		templateUrl: 'partials/businessDash.html',
+		controller: 'businessController'
+	})
 	.otherwise({
 		redirectTo: '/home'
 	});

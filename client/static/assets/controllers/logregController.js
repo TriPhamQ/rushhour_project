@@ -47,7 +47,7 @@ myApp.controller('logregController', ['$scope', 'usersFactory', '$location', '$r
                             console.log("test output", output);
                             if (!output.data.error) {
                 			    $scope.nextval.user =false;
-                                $location.url('/dashboard');
+                                $location.url('/businessDash');
                 			}
                             else {
                                 console.log("ERROR IS", output.data.error);
