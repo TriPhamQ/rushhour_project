@@ -3,24 +3,25 @@ myApp.controller('logregController', ['$scope', 'usersFactory', '$location', '$r
 	$scope.error = undefined;
     $scope.nextval = {};
     $scope.nextval.address = true;
+    $scope.nextval.name = false;
 
     $scope.startReg = function(){
         $location.url('/rush_hour/registration');
     }
     $scope.next = function(ax){
         console.log(ax);
-        console.log($scope.item);
-        if ($scope.selection == 'address'){
-            usersFactory.addressValidation($scope.item, function(output){
+        if ($scope.nextval.address == true){
+            usersFactory.addressValidation(ax, function(output){
                 console.log(output);
                 if (output.status == 200){
                     console.log('results');
                     console.log(output);
                     console.log(output.data[0].formatted_address);
-                    // $scope.registrationDetails = {};
-                    // $scope.registrationDetails.address = output.data[0].formatted_address;
-                    // $scope.item.address = null;
-                    // $scope.selection = $scope.items[1];
+                    $scope.registrationDetails = {};
+                    $scope.registrationDetails.address = output.data[0].formatted_address;
+                    $scope.item.address = '';
+                    $scope.nextval.address = false;
+                    $scope.nextval.name = true;
                 } else {
                     console.log(output.status);
                 }
