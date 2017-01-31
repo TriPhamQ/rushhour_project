@@ -4,7 +4,7 @@ myApp.config(function ($routeProvider) {
 	$routeProvider
 	.when('/home', {
 		templateUrl: 'partials/homepage.html',
-		controller: ''
+		controller: 'mapsController'
 	})
 	.when('/log-in', {
 		templateUrl: 'partials/logreg.html',
@@ -40,4 +40,12 @@ myApp.directive('ngEnter', function() {
             });
         };
     });
+
+// myApp.config(function(uiGmapGoogleMapApiProviders){
+// 	uiGmapGoogleMapApiProviders.configure({
+// 		key: 'AIzaSyCipGKNRqwoj-UbQ3eJbYy5rCHeRE2vjNE',
+// 		v: '3.17'
+// 		libraries: 'geometry,visualization'
+// 	})
+// })
 

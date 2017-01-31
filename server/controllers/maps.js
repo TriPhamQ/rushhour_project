@@ -1,3 +1,6 @@
+var mongoose = require('mongoose');
+var Business = mongoose.model('User');
+
 var api_key = 'AIzaSyCipGKNRqwoj-UbQ3eJbYy5rCHeRE2vjNE';
 var bass_url = 'https://maps.googleapis.com/maps/api/geocode/json?address='
 
@@ -14,6 +17,13 @@ module.exports = (function(){
 			}, function(error, response){
 				if (!error){
 					res.json(response.json.results);
+				}
+			})
+		},
+		getMarkers:function(req, res){
+			Business.find({}, function(err, allBs){
+				if (!err){
+					res.json(allBs);
 				}
 			})
 		}

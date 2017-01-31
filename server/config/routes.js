@@ -14,5 +14,8 @@ module.exports = function(app){
     });
     app.post('/validate_address', function(req, res){
     	maps.validateAddress(req, res);
-    })
+    });
+    app.get('/markers', function(req, res){
+        maps.getMarkers(req, res);
+    });
 };
