@@ -15,8 +15,8 @@
         <script src="routes.js" charset="utf-8"></script>
 		<script src="assets/app.js" charset="utf-8"></script>
 		<script src="assets/controllers/run.js" charset="utf-8"></script>
-        <script src="assets/controllers/logregController.js" charset="utf-8"></script>
         <script src="assets/factories/usersFactory.js" charset="utf-8"></script>
+        <script src="assets/controllers/logregController.js" charset="utf-8"></script>
 	</head>
 	<body>
 		<div class="navbar-fixed">
@@ -29,7 +29,7 @@
 						<li><a href="#!"></a></li>
 					</ul>
 					<ul class="right">
-						<li ng-show="!currentuser"><a href="#!/log-in">Login</a></li>
+						<li ng-show="!currentuser"><a href="#!/log-in">Business Login</a></li>
 						<li ng-show="currentuser"><a href="">Welcome, {{currentuser}}!</a></li>
 						<li><a href="#!"></a></li>
 					</ul>
@@ -37,9 +37,6 @@
 			</nav>
 		</div>
 		<div class="container">
-            <div class="row">
-                <h3>Welcome {{currentuser}} to Rush Hour!</h3>
-            </div>
             <div class="" ng-view="">
 
             </div>

@@ -14,15 +14,11 @@ myApp.config(function ($routeProvider) {
 		templateUrl: 'partials/dashboard.html',
 		controller: 'logregController'
 	})
-	// .when('/new-question', {
-	// 	templateUrl: 'partials/new_question.html',
-	// 	controller: 'triviasController'
-	// })
-	// .when('/lets-play', {
-	// 	templateUrl: 'partials/lets_play.html',
-	// 	controller: 'playController'
-	// })
+	.when('/rush_hour/registration', {
+		templateUrl: 'partials/startreg.html',
+		controller: 'logregController'
+	})
 	.otherwise({
-		redirectTo: '/'
+		redirectTo: '/home'
 	});
 });
