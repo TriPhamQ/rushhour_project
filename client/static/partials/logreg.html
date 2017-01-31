@@ -1,10 +1,10 @@
 <div class="row">
     <h3>Welcome {{currentuser}} to Rush Hour!</h3>
 </div>
-<div class="row">
+<div class="row" ng-show="!currentuser">
     <p>New Business? Register <a ng-click="startReg()" href="">Here</a></p>
 </div>
-<div class="row">
+<div class="row" ng-show="!currentuser">
 	<h4>Login:</h4>
 	<div class="input-field col s6">
 		<input type="text" name="email" value="" placeholder="Email" ng-model="login.email">
@@ -14,4 +14,10 @@
 	</div>
     <p ng-bind="error"></p>
 	<button class="btn waves-effect waves-light" type="button" name="button" ng-click="logUser()">Login</button>
+</div>
+<div class="row" ng-show="currentuser">
+    <p>Already logged in as {{currentuser}}. Click <a href="#!/dashboard">here</a> to access business's dashboard <a href="#!/dashboard"></a></p>
+</div>
+<div class="row" ng-show="currentuser">
+    <p>Want to add another business? Register <a ng-click="startReg()" href="">here</a></p>
 </div>

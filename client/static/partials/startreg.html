@@ -14,6 +14,7 @@
     </div>
     <p ng-bind="error"></p>
     <button class="btn waves-effect waves-light" type="button" name="button" ng-click="regUser()">Register</button>
+    <p>Already has a business account? Login <a ng-click="startLog()" href="">here</a></p>
 </div>
 <div class="row" ng-show="currentuser">
     <p>Already logged in as {{currentuser}}, please log out before registering new business.</p>

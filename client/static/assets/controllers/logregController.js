@@ -6,6 +6,10 @@ myApp.controller('logregController', ['$scope', 'usersFactory', '$location', '$r
         $location.url('/rush_hour/registration')
     }
 
+    $scope.startLog = function(){
+        $location.url('/log-in')
+    }
+
 	$scope.regUser = function () {
 		if ($scope.newUser.password == $scope.newUser.password_confirm) {
 			console.log($scope.newUser);
