@@ -102,7 +102,7 @@ myApp.controller('logregController', ['$scope', 'usersFactory', '$location', '$r
 		console.log($scope.login);
 		usersFactory.login($scope.login, function (output) {
 			if (!output.data.error) {
-                $location.url('/dashboard');
+                $location.url('/businessDash');
 			}
             else {
                 console.log("ERROR IS", output.data.error);
