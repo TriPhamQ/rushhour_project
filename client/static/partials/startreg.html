@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row" ng-show="!currentuser">
     <h4>Registration:</h4>
     <div class="input-field col s6">
     	<input type="text" name="name" value="" placeholder="Name" ng-model="newUser.name">
@@ -14,4 +14,10 @@
     </div>
     <p ng-bind="error"></p>
     <button class="btn waves-effect waves-light" type="button" name="button" ng-click="regUser()">Register</button>
+</div>
+<div class="row" ng-show="currentuser">
+    <p>Already logged in as {{currentuser}}, please log out before registering new business.</p>
+</div>
+<div class="row">
+	<button ng-show="currentuser" class="btn waves-effect waves-light" type="button" name="button" ng-click="logOut()">Log Out</button>
 </div>
