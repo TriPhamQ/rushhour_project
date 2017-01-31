@@ -1,6 +1,6 @@
 
 
-<div ng-show="nextval.address">      
+<div ng-show="nextval.address">
 
       <div class="row">
 
@@ -54,12 +54,16 @@
                 <div class="row">
                   <form class="col s12">
                       <div class="input-field col s12">
-                        <input type="email" ng-model="item.email" class="validate">
+                        <input type="email" ng-model="newBusiness.email" class="validate">
                         <label for="email">Email</label>
                       </div>
                       <div class="input-field col s12">
-                        <input type="password" ng-model="item.password" class="validate" ng-enter="next(item)">
+                        <input type="password" ng-model="newBusiness.password" class="validate" ng-enter="next(newBusiness)">
                         <label for="password">Password</label>
+                      </div>
+                      <div class="input-field col s12">
+                        <input type="password" ng-model="newBusiness.password_confirm" class="validate" ng-enter="next(newBusiness)">
+                        <label for="password">Confirm Password</label>
                       </div>
                   </form>
               </div>

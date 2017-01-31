@@ -22,11 +22,14 @@ var UserSchema = new mongoose.Schema({
 		required: true,
 		minlength: 8
 	},
-	win: {
-		type: Number
+	address: {
+		type: String || Number
 	},
-	lost:{
-		type: Number
+	placeId: {
+		type: String || Number
+	},
+	coords: {
+		type: Object
 	}
 }, {timestamps: true});
 

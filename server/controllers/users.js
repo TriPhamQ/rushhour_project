@@ -54,7 +54,7 @@ module.exports = (function () {
 							var token = jwt.sign({user: result.name, email: result.email, _id: result._id}, 'super secret');
 							// res.json({user: result.name, email: result.email, _id: result._id});
 							console.log("TOKEN", token);
-							res.json({token: token, user: result.name, email: result.email, _id: result._id});
+							res.json({token: token, user: result.name, email: result.email, _id: result._id, address: result.address, coords: result.coords, placeId: result.placeId});
 						}
 						else {
 							console.log("Wrong password...");

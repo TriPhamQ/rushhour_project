@@ -34,6 +34,35 @@ myApp.controller('logregController', ['$scope', 'usersFactory', '$location', '$r
             console.log($scope.registrationDetails);
             $scope.nextval.name = false;
             $scope.nextval.user = true;
+        } else if ($scope.nextval.user == true) {
+            if ($scope.newBusiness.password == $scope.newBusiness.password_confirm) {
+    			console.log($scope.newBusiness);
+                $scope.registrationDetails.email = $scope.newBusiness.email;
+                $scope.registrationDetails.password = $scope.newBusiness.password;
+    			usersFactory.register($scope.registrationDetails, function (output) {
+    				console.log("Output from register:", output.data);
+                    if (!output.data.error) {
+                        console.log("NO ERROR", output.data);
+                        usersFactory.login({email: $scope.registrationDetails.email, password: $scope.registrationDetails.password}, function (output) {
+                            console.log("test output", output);
+                            if (!output.data.error) {
+                			    $scope.nextval.user =false;
+                                $location.url('/dashboard');
+                			}
+                            else {
+                                console.log("ERROR IS", output.data.error);
+                            };
+                        });
+                    }
+                    else {
+                        $scope.error = output.data.error;
+                    };
+        			$scope.newBusiness = {};
+    			});
+    		}
+    		else {
+    			$scope.error = "Password confirmation does not match!"
+    		};
         }
     }
 
@@ -42,16 +71,15 @@ myApp.controller('logregController', ['$scope', 'usersFactory', '$location', '$r
     }
 
 	$scope.regUser = function () {
-		if ($scope.newUser.password == $scope.newUser.password_confirm) {
-			console.log($scope.newUser);
-			usersFactory.register($scope.newUser, function (output) {
+		if ($scope.newBusiness.password == $scope.newBusiness.password_confirm) {
+			console.log($scope.newBusiness);
+			usersFactory.register($scope.newBusiness, function (output) {
 				console.log("Output from register:", output.data);
                 if (!output.data.error) {
                     console.log("NO ERROR", output.data);
-                    usersFactory.login({email: $scope.newUser.email, password: $scope.newUser.password}, function (output) {
+                    usersFactory.login({email: $scope.newBusiness.email, password: $scope.newBusiness.password}, function (output) {
                         console.log(output);
                         if (!output.data.error) {
-            			    // console.log("SUCCESS, USER IS", output.data._id);
                             $location.url('/dashboard');
             			}
                         else {
@@ -62,7 +90,7 @@ myApp.controller('logregController', ['$scope', 'usersFactory', '$location', '$r
                 else {
                     $scope.error = output.data.error;
                 };
-    			$scope.newUser = {};
+    			$scope.newBusiness = {};
 			});
 		}
 		else {
