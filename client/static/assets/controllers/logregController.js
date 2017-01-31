@@ -30,6 +30,10 @@ myApp.controller('logregController', ['$scope', 'usersFactory', '$location', '$r
         }
     }
 
+    $scope.startLog = function(){
+        $location.url('/log-in')
+    }
+
 	$scope.regUser = function () {
 		if ($scope.newUser.password == $scope.newUser.password_confirm) {
 			console.log($scope.newUser);
@@ -47,6 +51,9 @@ myApp.controller('logregController', ['$scope', 'usersFactory', '$location', '$r
                             console.log("ERROR IS", output.data.error);
                         };
                     });
+                }
+                else {
+                    $scope.error = output.data.error;
                 };
     			$scope.newUser = {};
 			});
@@ -60,12 +67,11 @@ myApp.controller('logregController', ['$scope', 'usersFactory', '$location', '$r
 		console.log($scope.login);
 		usersFactory.login($scope.login, function (output) {
 			if (!output.data.error) {
-                // console.log(output.data);
-			    // console.log("SUCCESS, USER IS", output.data._id);
                 $location.url('/dashboard');
 			}
             else {
                 console.log("ERROR IS", output.data.error);
+                $scope.error = output.data.error;
             };
             $scope.login = {};
 		});
