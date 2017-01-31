@@ -1,5 +1,5 @@
 console.log('users controller');
-var bcrypt = require('bcryptjs');
+var bcrypt = require('bcrypt');
 var jwt = require("jsonwebtoken");
 var mongoose = require('mongoose');
 var User = mongoose.model('User');
