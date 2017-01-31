@@ -1,6 +1,9 @@
-myApp.controller('businessController', ['$scope', '$location', '$rootScope', '$cookies', function ($scope, $location, $rootScope, $cookies){
-	
+myApp.controller('businessController', ['$scope', '$location', '$rootScope', '$cookies', 'businessFactory',  function ($scope, $location, $rootScope, $cookies, businessFactory){
+
 	console.log('businessController');
+
+	$scope.error_message = "";
+	$scope.items = [];
 
 	$scope.logOut = function () {
         $cookies.remove('token');
@@ -11,5 +14,23 @@ myApp.controller('businessController', ['$scope', '$location', '$rootScope', '$c
         $rootScope.currentuser_id = null;
         $location.url('/log-in');
     };
+	$scope.submit = function() {
+		console.log($scope.addItem);
+		if(!$scope.addItem) {
+			$scope.error_message = "Item needs to be filled";
+		} else {
+			console.log("Item is filled");
+			$scope.error_message = "";
+			console.log("no errors");
+			businessFactory.addItem($scope.addItem, function() {
+				console.log("Successfully saved an Item");
+			});
+		}
+		$scope.addItem = {};
+	};
+	businessFactory.getItems(function(output) {
+    $scope.items = output;
+    console.log($scope.items);
+	});
 
 }]);

@@ -1,0 +1,9 @@
+<h1>Business DASHBOARD</h1>
+<div class="row">
+	<label>Name of Item:</label><input type="text" ng-model="addItem.item">
+	<button type="button" name="button" ng-click="submit()">Add Item</button>
+</div>
+<div ng-repeat="i in items">
+    {{i.item}}
+</div>
+<button ng-show="currentuser" class="btn waves-effect waves-light" type="button" name="button" ng-click="logOut()">Log Out</button>
