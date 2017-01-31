@@ -4,23 +4,19 @@ This is RUSH HOUR~~~~~~~~
 
 ## Code Example
 
-
+<h1>Hello World!</h1>
 
 ## Motivation
 
-
+Food Deluge
 
 ## Installation
 
-
+npm install, bower install
 
 ## API Reference
 
-
-
-## Tests
-
-
+Google Maps API
 
 ## Contributors
 
