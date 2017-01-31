@@ -17,6 +17,7 @@
 		<script src="assets/app.js" charset="utf-8"></script>
 		<script src="assets/controllers/run.js" charset="utf-8"></script>
         <script src="assets/factories/usersFactory.js" charset="utf-8"></script>
+		<script src="assets/factories/businessFactory.js" charset="utf-8"></script>
         <script src="assets/controllers/logregController.js" charset="utf-8"></script>
         <script src="assets/controllers/businessController.js" charset="utf-8"></script>
 	</head>
@@ -27,8 +28,8 @@
 					<a href="#" class="brand-logo center">Rush Hour</a>
 					<ul class="left">
 						<li><a href="#!/home">Home</a></li>
-						<li ng-show="currentuser"><a href="#!/dashboard">Dashboard</a></li>
-						<li><a href="#!"></a></li>
+						<li><a href="#!/dashboard">Dashboard</a></li>
+						<li ng-show="currentuser"><a href="#!/businessDash">Business Dashboard</a></li>
 					</ul>
 					<ul class="right">
 						<li ng-show="!currentuser"><a href="#!/log-in">Business Login</a></li>
