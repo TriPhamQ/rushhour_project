@@ -12,6 +12,11 @@ myApp.factory('businessFactory', ['$http', '$cookies', '$rootScope', function ($
             callback(output.data);
         });
     };
+    factory.increaseCount = function(data, callback) {
+        $http.post('/increase', {id: data}).then(function(output) {
+            callback(output.data);
+        });
+    }
     return factory;
 
 }]);

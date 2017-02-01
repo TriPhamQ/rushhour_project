@@ -39,6 +39,25 @@ module.exports = (function() {
                     res.json(result);
                 }
             })
+        },
+        increaseCount: function(req, res) {
+            console.log("========== getting count ==========");
+            console.log(req.body.id);
+            console.log("========== getting count ==========");
+
+            Item.findOne({_id: req.body.id}, function(err, result) {
+                if(err){
+                    console.log("========== error increasing count ==========");
+                    console.log(err);
+                    console.log("========== error increaseing count ==========");
+                } else {
+                    result.count ++;
+                    result.save();
+                    console.log("========== successfully increase count ==========");
+                    console.log(result);
+                    console.log("========== successfully increasee count ==========");
+                }
+            })
         }
     }
 

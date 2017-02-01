@@ -25,4 +25,7 @@ module.exports = function(app){
     app.get('/getItem', function(req, res) {
         items.getItems(req, res);
     });
+    app.post('/increase', function(req, res) {
+        items.increaseCount(req, res);
+    });
 };
