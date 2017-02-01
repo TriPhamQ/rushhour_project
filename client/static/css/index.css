@@ -1,5 +1,6 @@
 .all-items {
     display: block;
+    text-align: center;
 }
 .all-items p {
     text-align: center;
@@ -12,4 +13,10 @@
 .the-items {
     display: inline-block;
     margin-right: 40px;
+}
+.error-message {
+    color: red;
+}
+.tabs{
+    text-align: center;
 }

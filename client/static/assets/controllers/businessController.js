@@ -11,13 +11,13 @@ myApp.controller('businessController', ['$scope', '$location', '$rootScope', '$c
 		$scope.sales = null;
 		$scope.performance = null;
 		switch (choice){
-			case 1: 
+			case 1:
 				$scope.sales = true;
 				break;
-			case 2: 
+			case 2:
 				$scope.create = true;
 				break;
-			case 3: 
+			case 3:
 				$scope.performance = true;
 				break;
 		}
@@ -38,25 +38,28 @@ myApp.controller('businessController', ['$scope', '$location', '$rootScope', '$c
 
 	// the submit button to add an item
 	$scope.submit = function() {
-		console.log($scope.addItem);
-		if(!$scope.addItem) {
+		console.log($scope.addItem.item);
+		if(!$scope.addItem.item) {
 			$scope.error_message = "Item needs to be filled";
 		} else {
 			console.log("Item is filled");
 			$scope.error_message = "";
-			console.log("no errors");
-			$scope.addItem._user = $rootScope.currentuser_id;
-			$scope.addItem.count = 0;
-			businessFactory.addItem($scope.addItem, function() {
-				console.log("Successfully saved an Item");
-				businessFactory.getItems(function(output) {
-			    $scope.items = output;
-			    console.log($scope.items);
-				$scope.addItem = undefined;
-				$scope.tabOver(1);
-				});
-			});
+			if(!$scope.addItem.image) {
+				$scope.addItem.image = "https://media.giphy.com/media/ktvFa67wmjDEI/giphy.gif";
 
+				console.log("no errors");
+				$scope.addItem._user = $rootScope.currentuser_id;
+				$scope.addItem.count = 0;
+				businessFactory.addItem($scope.addItem, function() {
+					console.log("Successfully saved an Item");
+					businessFactory.getItems(function(output) {
+				    $scope.items = output;
+				    console.log($scope.items);
+					$scope.addItem = undefined;
+					$scope.tabOver(1);
+					});
+				});
+			}
 		}
 	};
 	businessFactory.getItems(function(output) {
