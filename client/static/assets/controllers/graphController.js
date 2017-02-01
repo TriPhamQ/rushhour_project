@@ -1,4 +1,4 @@
-myApp.controller('graphController', ['$scope', '$location', '$rootScope', '$cookies', 'graphFactory',  function ($scope, $location, $rootScope, $cookies, businessFactory){
+myApp.controller('graphController', ['$scope', '$location', '$rootScope', '$cookies', 'graphFactory',  function ($scope, $location, $rootScope, $cookies, graphFactory){
 	$scope.labels = ["January", "February", "March", "April", "May", "June", "July"];
 	$scope.series = ['Series A'];
 	$scope.data = [[0]];

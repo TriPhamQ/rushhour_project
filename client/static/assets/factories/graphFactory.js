@@ -3,11 +3,10 @@ myApp.factory('graphFactory', ['$http', '$cookies', '$rootScope', function ($htt
     var factory = {};
 
 
-    
+
     factory.getData = function(callback){
-        $http.get('/add').then(function(output){
+        $http.get('/get_data').then(function(output){
             console.log(output);
-            callback();
         });
     };
 

@@ -2,6 +2,7 @@ console.log("Routes...");
 var users = require('../controllers/users.js');
 var maps = require('../controllers/maps.js');
 var items = require('../controllers/items.js');
+var graph = require('../controllers/graphController');
 
 module.exports = function(app){
     app.get('/', function (req, res) {
@@ -30,5 +31,8 @@ module.exports = function(app){
     });
     app.post('/items/delete', function(req, res) {
         items.deleteItem(req, res);
+    });
+    app.get('/get_data', function(req, res){
+        graph.getData(req, res);
     })
 };
