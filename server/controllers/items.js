@@ -3,6 +3,7 @@ var mongoose = require('mongoose');
 
 // Require the model and save it in a variable
 var Item = mongoose.model('Item');
+var Data = mongoose.model('gData');
 
 module.exports = (function() {
     return {
@@ -18,6 +19,12 @@ module.exports = (function() {
                 console.log(err);
                 console.log("========== error adding a new item ==========");
             } else {
+                var graphPoint = new Data({_product_id:item._id, count_time:[]});
+                graphPoint.save(function(err){
+                    if (!err){
+                        console.log('graphPoint saved');
+                    }
+                })
                 console.log("========== successfully added a new item ==========");
                 console.log(item);
                 console.log("========== successfully added a new item ==========");
@@ -52,7 +59,16 @@ module.exports = (function() {
                     console.log("========== error increaseing count ==========");
                 } else {
                     result.count ++;
-                    result.save();
+                    result.save(function(){
+                            Data.findOne({_product_id:result._id}, function(err, graphPoint){
+                                graphPoint.count_time.push(result.updatedAt);
+                                graphPoint.markModified('count_time');
+                                graphPoint.save(function(){
+                                    console.log('data added');
+                                });
+
+                            })
+                    });
                     console.log("========== successfully increase count ==========");
                     console.log(result);
                     console.log("========== successfully increasee count ==========");
