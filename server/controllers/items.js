@@ -71,10 +71,37 @@ module.exports = (function() {
                     });
                     console.log("========== successfully increase count ==========");
                     console.log(result);
-                    console.log("========== successfully increasee count ==========");
+                    console.log("========== successfully increase count ==========");
                     res.json(result);
                 }
             })
+        },
+        deleteItem: function(req, res) {
+            console.log("========== getting item ==========");
+            console.log(req.body);
+            console.log("========== getting item ==========");
+
+            Item.remove({_id: req.body.id}, function(err) {
+                if(err) {
+                    console.log("========== error in deleting item ==========");
+                    console.log(err);
+                    console.log("========== error in deleting item ==========");
+                } else {
+                    Item.find({}, function(err, result) {
+                        if(err) {
+                            console.log("========== error finding item ==========");
+                            console.log(err);
+                            console.log("========== error finding item ==========");
+                        } else {
+                            console.log("========== successfully found all items ==========");
+                            console.log(result);
+                            console.log("========== successfully found all items ==========");
+                            res.json(result);
+                        }
+                    });
+                    console.log("========== successfully delete item ==========");
+                }
+            });
         }
     }
 

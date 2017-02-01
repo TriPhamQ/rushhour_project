@@ -4,6 +4,9 @@
 .all-items p {
     text-align: center;
 }
+.all-items button {
+    margin-left: 10px;
+}
 .all-items img {
     width: 200px;
     height: 200px;

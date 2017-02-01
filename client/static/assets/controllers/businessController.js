@@ -71,7 +71,17 @@ myApp.controller('businessController', ['$scope', '$location', '$rootScope', '$c
 	$scope.addCount = function(id) {
 		businessFactory.increaseCount(id, function(output) {
 			// console.log(output);
+			$scope.items = output.data;
 			console.log("Successfully increase count by one");
 		});
 	};
+
+	// delete an item
+	$scope.delete = function(id) {
+		console.log(id);
+		businessFactory.deleteItem(id, function(output) {
+			console.log(output);
+			$scope.items = output.data;
+		});
+	}
 }]);

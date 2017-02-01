@@ -16,7 +16,13 @@ myApp.factory('businessFactory', ['$http', '$cookies', '$rootScope', function ($
         $http.post('/increase', {id: data}).then(function(output) {
             callback(output);
         });
-    }
+    };
+    factory.deleteItem = function(data, callback) {
+        $http.post('/items/delete', {id: data}).then(function(output) {
+            console.log(output);
+            callback(output);
+        });
+    };
     return factory;
 
 }]);

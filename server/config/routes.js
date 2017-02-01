@@ -28,4 +28,7 @@ module.exports = function(app){
     app.post('/increase', function(req, res) {
         items.increaseCount(req, res);
     });
+    app.post('/items/delete', function(req, res) {
+        items.deleteItem(req, res);
+    })
 };
