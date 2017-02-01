@@ -18,6 +18,7 @@ module.exports = function(app){
     });
     app.get('/markers', function(req, res){
         maps.getMarkers(req, res);
+    });
     app.post('/add', function(req, res) {
         items.addItem(req, res);
     });
