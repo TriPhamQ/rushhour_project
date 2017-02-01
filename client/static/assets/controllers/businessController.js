@@ -38,22 +38,15 @@ myApp.controller('businessController', ['$scope', '$location', '$rootScope', '$c
 		}
 	};
 	businessFactory.getItems(function(output) {
-    $scope.items = output;
-    console.log($scope.items);
+	    $scope.items = output;
+	    console.log($scope.items);
 	});
 
 	// increasing count function
 	$scope.addCount = function(id) {
-		console.log(id);
-		businessFactory.increaseCount(id, function() {
+		businessFactory.increaseCount(id, function(output) {
+			// console.log(output);
 			console.log("Successfully increase count by one");
-			businessFactory.getItems(function(output) {
-				$scope.items = output;
-				console.log($scope.items);
-
-			})
-		})
-	}
-
-
+		});
+	};
 }]);

@@ -14,7 +14,7 @@ myApp.factory('businessFactory', ['$http', '$cookies', '$rootScope', function ($
     };
     factory.increaseCount = function(data, callback) {
         $http.post('/increase', {id: data}).then(function(output) {
-            callback(output.data);
+            callback(output);
         });
     }
     return factory;

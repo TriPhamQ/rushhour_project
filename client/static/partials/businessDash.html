@@ -9,7 +9,7 @@
 </div>
 <div class="all-items">
     <div class="the-items" ng-if="items" ng-repeat="i in items">
-        <img src="{{i.image}}" ng-model="increaseCount.count" ng-click="addCount(i._id)">
+        <img src="{{i.image}}" ng-click="addCount(i._id)">
         <p>{{i.item}}<p>
     </div>
 </div>

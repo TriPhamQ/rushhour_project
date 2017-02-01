@@ -56,6 +56,7 @@ module.exports = (function() {
                     console.log("========== successfully increase count ==========");
                     console.log(result);
                     console.log("========== successfully increasee count ==========");
+                    res.json(result);
                 }
             })
         }
