@@ -46,7 +46,7 @@ myApp.controller('businessController', ['$scope', '$location', '$rootScope', '$c
 			$scope.error_message = "";
 			if(!$scope.addItem.image) {
 				$scope.addItem.image = "https://media.giphy.com/media/ktvFa67wmjDEI/giphy.gif";
-
+			}
 				console.log("no errors");
 				$scope.addItem._user = $rootScope.currentuser_id;
 				$scope.addItem.count = 0;
@@ -59,7 +59,7 @@ myApp.controller('businessController', ['$scope', '$location', '$rootScope', '$c
 					$scope.tabOver(1);
 					});
 				});
-			}
+			
 		}
 	};
 	businessFactory.getItems(function(output) {
