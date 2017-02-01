@@ -2,7 +2,7 @@ var myApp = angular.module('app', ['ngRoute', 'ngCookies', 'ngAnimate']);
 
 myApp.config(function ($routeProvider) {
 	$routeProvider
-	.when('/home', {
+	.when('/', {
 		templateUrl: 'partials/homepage.html',
 		controller: 'mapsController'
 	})
@@ -23,7 +23,7 @@ myApp.config(function ($routeProvider) {
 		controller: 'businessController'
 	})
 	.otherwise({
-		redirectTo: '/home'
+		redirectTo: '/'
 	});
 });
 
@@ -48,4 +48,3 @@ myApp.directive('ngEnter', function() {
 // 		libraries: 'geometry,visualization'
 // 	})
 // })
-

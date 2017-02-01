@@ -50,7 +50,7 @@ myApp.factory('mapFactory', ['$http', function ($http) {
 
 		if (!map){
 			var map = new google.maps.Map(document.getElementById('map'), {
-				zoom: 3,
+				zoom: 15,
 				center: myLatLng
 			});
 		}
