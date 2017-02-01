@@ -31,7 +31,10 @@
     	<button ng-show="currentuser" class="btn waves-effect waves-light" type="button" name="button" ng-click="logOut()">Log Out</button>
     </div>
 
-    <div id="STATS" ng-show="performance">
+    <div id="STATS" ng-show="performance" ng-controller="graphController">
     	<h1>Performance Graph</h1>
+    	<canvas id="line" class="chart chart-line"
+		  chart-data="data" chart-labels="labels" chart-series="series" chart-options="options" chart-dataset-override="datasetOverride" chart-click="onClick()">
+		</canvas>
     </div>
 </div>
