@@ -30,7 +30,8 @@ var UserSchema = new mongoose.Schema({
 	},
 	coords: {
 		type: Object
-	}
+	},
+	items: {type: Schema.Types.ObjectId, ref: 'Item'},
 }, {timestamps: true});
 
 mongoose.model('User', UserSchema);

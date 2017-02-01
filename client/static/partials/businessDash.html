@@ -7,9 +7,9 @@
     <label>Image of Item:</label><input type="text" ng-model="addItem.image">
 	<button class="btn waves-effect waves-light" type="button" name="button" ng-click="submit()">Add Item</button>
 </div>
-<div class="all-items"
-    <div ng-repeat="i in items">
-        <image src="{{i.image}}">
+<div class="all-items">
+    <div class="the-items" ng-if="items" ng-repeat="i in items">
+        <img src="{{i.image}}" ng-click="addCount()">
         <p>{{i.item}}<p>
     </div>
 </div>

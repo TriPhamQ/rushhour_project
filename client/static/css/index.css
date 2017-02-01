@@ -1,0 +1,15 @@
+.all-items {
+    display: block;
+}
+.all-items p {
+    text-align: center;
+}
+.all-items img {
+    width: 200px;
+    height: 200px;
+    cursor: pointer;
+}
+.the-items {
+    display: inline-block;
+    margin-right: 40px;
+}

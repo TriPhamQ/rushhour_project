@@ -14,6 +14,8 @@ myApp.controller('businessController', ['$scope', '$location', '$rootScope', '$c
         $rootScope.currentuser_id = null;
         $location.url('/log-in');
     };
+
+	// the submit button to add an item
 	$scope.submit = function() {
 		console.log($scope.addItem);
 		if(!$scope.addItem) {
@@ -22,6 +24,8 @@ myApp.controller('businessController', ['$scope', '$location', '$rootScope', '$c
 			console.log("Item is filled");
 			$scope.error_message = "";
 			console.log("no errors");
+			$scope.addItem._user = $rootScope.currentuser_id;
+			$scope.addItem.count = 0;
 			businessFactory.addItem($scope.addItem, function() {
 				console.log("Successfully saved an Item");
 				businessFactory.getItems(function(output) {
@@ -37,5 +41,6 @@ myApp.controller('businessController', ['$scope', '$location', '$rootScope', '$c
     $scope.items = output;
     console.log($scope.items);
 	});
+
 
 }]);
