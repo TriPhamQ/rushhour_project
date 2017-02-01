@@ -3,15 +3,15 @@
 <div class="row">
     <div class="col s12">
       <ul class="tabs">
-        <li class="tab col s3"><a class="active" href="" ng-click="tabOver(1)">Sales</a></li>
-        <li class="tab col s3"><a href="" ng-click="tabOver(2)">Add Products</a></li>
-        <li class="tab col s3"><a href="" ng-click="tabOver(3)">Performance</a></li>
+        <li class="tab col s4"><a class="active" href="" ng-click="tabOver(1)">Sales</a></li>
+        <li class="tab col s4"><a href="" ng-click="tabOver(2)">Add Products</a></li>
+        <li class="tab col s4"><a href="" ng-click="tabOver(3)">Performance</a></li>
       </ul>
     </div>
-
+</div>
     <div class="error-message">
     	    <h2>{{error_message}}</h2>
-    	</div>
+    </div>
 
     <div id='NewItem' ng-show="create">
     	<div class="row">
@@ -37,4 +37,3 @@
 		  chart-data="data" chart-labels="labels" chart-series="series" chart-options="options" chart-dataset-override="datasetOverride" chart-click="onClick()">
 		</canvas>
     </div>
-</div>
