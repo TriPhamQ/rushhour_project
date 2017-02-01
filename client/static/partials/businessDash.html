@@ -4,7 +4,7 @@
     <div class="col s12">
       <ul class="tabs">
         <li class="tab col s4"><a class="active" href="" ng-click="tabOver(1)">Sales</a></li>
-        <li class="tab col s4"><a href="" ng-click="tabOver(2)">Add Products</a></li>
+        <li class="tab col s4"><a href="" ng-click="tabOver(2)">Add Items</a></li>
         <li class="tab col s4"><a href="" ng-click="tabOver(3)">Performance</a></li>
       </ul>
     </div>
@@ -28,7 +28,6 @@
     	        <p>{{i.item}}<p>
     	    </div>
     	</div>
-    	<button ng-show="currentuser" class="btn waves-effect waves-light" type="button" name="button" ng-click="logOut()">Log Out</button>
     </div>
 
     <div id="STATS" ng-show="performance" ng-controller="graphController">

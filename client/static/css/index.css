@@ -1,6 +1,5 @@
 .all-items {
     display: block;
-    text-align: center;
 }
 .all-items p {
     text-align: center;
@@ -9,6 +8,7 @@
     width: 200px;
     height: 200px;
     cursor: pointer;
+
 }
 .the-items {
     display: inline-block;
