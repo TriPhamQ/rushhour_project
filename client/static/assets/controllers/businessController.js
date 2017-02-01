@@ -2,6 +2,27 @@ myApp.controller('businessController', ['$scope', '$location', '$rootScope', '$c
 
 	console.log('businessController');
 
+	$scope.sales = true;
+	$scope.create = null;
+	$scope.performance = null;
+
+	$scope.tabOver = function(choice){
+		$scope.create = null;
+		$scope.sales = null;
+		$scope.performance = null;
+		switch (choice){
+			case 1: 
+				$scope.sales = true;
+				break;
+			case 2: 
+				$scope.create = true;
+				break;
+			case 3: 
+				$scope.performance = true;
+				break;
+		}
+	}
+
 	$scope.error_message = "";
 	$scope.items = [];
 

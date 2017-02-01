@@ -1,16 +1,37 @@
-<h1>Business DASHBOARD</h1>
-<div class="error-message">
-    <h2>{{error_message}}</h2>
-</div>
-<div class="row">
-	<label>Name of Item:</label><input type="text" ng-model="addItem.item">
-    <label>Image of Item:</label><input type="text" ng-model="addItem.image">
-	<button class="btn waves-effect waves-light" type="button" name="button" ng-click="submit()">Add Item</button>
-</div>
-<div class="all-items">
-    <div class="the-items" ng-if="items" ng-repeat="i in items">
-        <img src="{{i.image}}" ng-click="addCount(i._id)">
-        <p>{{i.item}}<p>
+
+
+  <div class="row">
+    <div class="col s12">
+      <ul class="tabs">
+        <li class="tab col s3"><a class="active" href="" ng-click="tabOver(1)">Sales</a></li>
+        <li class="tab col s3"><a href="" ng-click="tabOver(2)">Add Products</a></li>
+        <li class="tab col s3"><a href="" ng-click="tabOver(3)">Performance</a></li>
+      </ul>
     </div>
-</div>
-<button ng-show="currentuser" class="btn waves-effect waves-light" type="button" name="button" ng-click="logOut()">Log Out</button>
+
+    <div id='NewItem' ng-show="create">
+		<div class="error-message">
+		    <h2>{{error_message}}</h2>
+		</div>
+		<div class="row">
+			<label>Name of Item:</label><input type="text" ng-model="addItem.item">
+		    <label>Image of Item:</label><input type="text" ng-model="addItem.image">
+			<button class="btn waves-effect waves-light" type="button" name="button" ng-click="submit()">Add Item</button>
+		</div>
+	</div>
+
+	<div id="AllItems" ng-show="sales">
+		<div class="all-items">
+		    <div class="the-items" ng-if="items" ng-repeat="i in items">
+		        <img ng-src="{{i.image}}" ng-click="addCount(i._id)">
+		        <p>{{i.item}}<p>
+		    </div>
+		</div>
+		<button ng-show="currentuser" class="btn waves-effect waves-light" type="button" name="button" ng-click="logOut()">Log Out</button>
+	</div>
+
+	<div id="STATS" ng-show="performance">
+		<h1>Performance Graph</h1>
+	</div>
+
+
