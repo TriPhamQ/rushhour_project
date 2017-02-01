@@ -26,7 +26,7 @@ myApp.factory('mapFactory', ['$http', function ($http) {
 		var user;
 		for (var i = 0; i < len; i++){
 			user = output[i];
-			var contentString = 
+			var contentString =
 				'<p><b>Name</b>: ' + user.name +
                 '<br><b>Adress</b>: ' + user.address +
                 '</p>';
@@ -39,7 +39,7 @@ myApp.factory('mapFactory', ['$http', function ($http) {
             	}),
             	username: user.name,
             	address:user.address
-            });  
+            });
 		};
 
 		return locations;
@@ -80,9 +80,9 @@ myApp.factory('mapFactory', ['$http', function ($http) {
 
 	};
 
-	google.maps.event.addDomListener(window, 'load',
-		factory.refresh(selectedLat, selectedLong));
-	
+	// google.maps.event.addDomListener(window, 'load',
+	// 	factory.refresh(selectedLat, selectedLong));
+
 
 	return factory;
 
