@@ -9,10 +9,11 @@
       </ul>
     </div>
 
-    <div id='NewItem' ng-show="create">
-		<div class="error-message">
+    <div class="error-message">
 		    <h2>{{error_message}}</h2>
 		</div>
+
+    <div id='NewItem' ng-show="create">
 		<div class="row">
 			<label>Name of Item:</label><input type="text" ng-model="addItem.item">
 		    <label>Image of Item:</label><input type="text" ng-model="addItem.image">

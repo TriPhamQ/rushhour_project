@@ -53,6 +53,7 @@ myApp.controller('businessController', ['$scope', '$location', '$rootScope', '$c
 			    $scope.items = output;
 			    console.log($scope.items);
 				$scope.addItem = undefined;
+				$scope.tabOver(1);
 				});
 			});
 
