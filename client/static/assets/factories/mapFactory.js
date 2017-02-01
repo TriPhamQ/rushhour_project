@@ -2,11 +2,87 @@ myApp.factory('mapFactory', ['$http', function ($http) {
 
 	factory = {};
 
-	factory.getMarkers = function(callback){
+	var locations = [];
+
+	var selectedLat = null;
+	var selectedLong = null;
+
+	factory.refresh = function(lat, long){
+		locations = [];
+
+		selectedLat = lat;
+		selectedLong = long;
+
 		$http.get('/markers').then(function(output){
-			callback(output);
-		})
+			locations = convertToMapPoints(output.data);
+			initialize(lat, long);
+		});
+	};
+
+	var convertToMapPoints = function(output){
+		console.log(output);
+		var locations = [];
+		var len = output.length;
+		var user;
+		for (var i = 0; i < len; i++){
+			user = output[i];
+			var contentString = 
+				'<p><b>Name</b>: ' + user.name +
+                '<br><b>Adress</b>: ' + user.address +
+                '</p>';
+
+            locations.push({
+            	latlon: new google.maps.LatLng(user.coords.lat, user.coords.lng),
+            	message: new google.maps.InfoWindow({
+            		content: contentString,
+            		maxWidth: 320
+            	}),
+            	username: user.name,
+            	address:user.address
+            });  
+		};
+
+		return locations;
 	}
+
+	var initialize = function(lat, long){
+		var myLatLng = {lat: selectedLat, lng: selectedLong};
+
+		if (!map){
+			var map = new google.maps.Map(document.getElementById('map'), {
+				zoom: 3,
+				center: myLatLng
+			});
+		}
+
+		locations.forEach(function(n, i){
+			var marker = new google.maps.Marker({
+				position: n.latlon,
+				map: map,
+				title: "Rush Hour Map",
+				icon: '',
+			});
+
+			google.maps.event.addListener(marker, 'click', function(e){
+				currentSelectedMarker = n;
+				n.message.open(map, marker);
+			});
+		});
+
+		var initalLocation = new google.maps.LatLng(lat, long);
+		var marker = new google.maps.Marker({
+			position: initalLocation,
+			animation: google.maps.Animation.Bounce,
+			map: map,
+			icon: ''
+		});
+		lastMarker = marker;
+
+	};
+
+	google.maps.event.addDomListener(window, 'load',
+		factory.refresh(selectedLat, selectedLong));
+	
 
 	return factory;
 
