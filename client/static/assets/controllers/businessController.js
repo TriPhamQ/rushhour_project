@@ -24,9 +24,14 @@ myApp.controller('businessController', ['$scope', '$location', '$rootScope', '$c
 			console.log("no errors");
 			businessFactory.addItem($scope.addItem, function() {
 				console.log("Successfully saved an Item");
+				businessFactory.getItems(function(output) {
+			    $scope.items = output;
+			    console.log($scope.items);
+				$scope.addItem = undefined;
+				});
 			});
+
 		}
-		$scope.addItem = {};
 	};
 	businessFactory.getItems(function(output) {
     $scope.items = output;
