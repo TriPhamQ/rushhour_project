@@ -70,9 +70,11 @@ myApp.controller('businessController', ['$scope', '$location', '$rootScope', '$c
 	// increasing count function
 	$scope.addCount = function(id) {
 		businessFactory.increaseCount(id, function(output) {
-			// console.log(output);
-			$scope.items = output.data;
 			console.log("Successfully increase count by one");
+			businessFactory.getItems(function(output) {
+	    	$scope.items = output;
+	    	console.log($scope.items);
+	});
 		});
 	};
 

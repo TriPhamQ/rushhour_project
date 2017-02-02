@@ -10,7 +10,14 @@ module.exports = (function() {
         
 
         getData:function(req, res){
-            res.json({});
+            Data.find({}, function(err, allData){
+                if (!err){
+                    res.json(allData);
+                } else {
+                    console.log(err);
+                    res.json({});
+                }
+            })
         }
 
         

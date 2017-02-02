@@ -6,7 +6,7 @@ myApp.factory('graphFactory', ['$http', '$cookies', '$rootScope', function ($htt
 
     factory.getData = function(callback){
         $http.get('/get_data').then(function(output){
-            console.log(output);
+            callback(output);
         });
     };
 

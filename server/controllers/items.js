@@ -54,25 +54,37 @@ module.exports = (function() {
 
             Item.findOne({_id: req.body.id}, function(err, result) {
                 if(err){
+
                     console.log("========== error increasing count ==========");
                     console.log(err);
                     console.log("========== error increaseing count ==========");
+
                 } else {
+
                     result.count ++;
                     result.save(function(){
-                            Data.findOne({_product_id:result._id}, function(err, graphPoint){
-                                graphPoint.count_time.push(result.updatedAt);
-                                graphPoint.markModified('count_time');
-                                graphPoint.save(function(){
-                                    console.log('data added');
-                                });
 
+                            Data.findOne({_product_id:result._id}, function(err, graphPoint){ 
+                                if (!err){
+                                    if (graphPoint){
+                                        graphPoint.count_time.push(result.updatedAt);
+                                        graphPoint.markModified('count_time');
+                                        graphPoint.save(function(){
+                                            console.log('data added');
+
+
+                                        });
+                                        res.json({});
+                                    } else {console.log('no graphpoint found..')}
+                                } else {console.log(err)}
                             })
+
                     });
                     console.log("========== successfully increase count ==========");
                     console.log(result);
                     console.log("========== successfully increase count ==========");
-                    res.json(result);
+                  
+
                 }
             })
         },
