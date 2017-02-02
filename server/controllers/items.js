@@ -64,7 +64,7 @@ module.exports = (function() {
                     result.count ++;
                     result.save(function(){
 
-                            Data.findOne({_product_id:result._id}, function(err, graphPoint){ 
+                            Data.findOne({_product_id:result._id}, function(err, graphPoint){
                                 if (!err){
                                     if (graphPoint){
                                         graphPoint.count_time.push(result.updatedAt);
@@ -83,7 +83,7 @@ module.exports = (function() {
                     console.log("========== successfully increase count ==========");
                     console.log(result);
                     console.log("========== successfully increase count ==========");
-                  
+
 
                 }
             })
@@ -99,19 +99,23 @@ module.exports = (function() {
                     console.log(err);
                     console.log("========== error in deleting item ==========");
                 } else {
-                    Item.find({}, function(err, result) {
-                        if(err) {
-                            console.log("========== error finding item ==========");
-                            console.log(err);
-                            console.log("========== error finding item ==========");
-                        } else {
-                            console.log("========== successfully found all items ==========");
-                            console.log(result);
-                            console.log("========== successfully found all items ==========");
-                            res.json(result);
+                    Data.remove({_product_id: req.body.id}, function (err) {
+                        if (!err) {
+                            Item.find({}, function(err, result) {
+                                if(err) {
+                                    console.log("========== error finding item ==========");
+                                    console.log(err);
+                                    console.log("========== error finding item ==========");
+                                } else {
+                                    console.log("========== successfully found all items ==========");
+                                    console.log(result);
+                                    console.log("========== successfully found all items ==========");
+                                    res.json(result);
+                                }
+                            });
+                            console.log("========== successfully delete item ==========");
                         }
-                    });
-                    console.log("========== successfully delete item ==========");
+                    })
                 }
             });
         }

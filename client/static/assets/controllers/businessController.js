@@ -20,8 +20,8 @@ myApp.controller('businessController', ['$scope', '$location', '$rootScope', '$c
 			case 3:
 				$scope.performance = true;
 				break;
-		}
-	}
+		};
+	};
 
 	$scope.error_message = "";
 	$scope.items = [];
@@ -38,29 +38,46 @@ myApp.controller('businessController', ['$scope', '$location', '$rootScope', '$c
 
 	// the submit button to add an item
 	$scope.submit = function() {
-		console.log($scope.addItem.item);
-		if(!$scope.addItem.item) {
+		// console.log($scope.addItem.item);
+		if(!$scope.addItem) {
 			$scope.error_message = "Item needs to be filled";
-		} else {
+		}
+		else if (!$scope.addItem.item) {
+			$scope.error_message = "Item needs to be filled";
+			$scope.addItem = undefined;
+		}
+		else if (!$scope.addItem.image) {
+			$scope.addItem.image = "https://media.giphy.com/media/ktvFa67wmjDEI/giphy.gif";
+			$scope.addItem._user = $rootScope.currentuser_id;
+			$scope.addItem.count = 0;
+			businessFactory.addItem($scope.addItem, function() {
+				console.log("Successfully saved an Item");
+				businessFactory.getItems(function(output) {
+			    $scope.items = output;
+			    console.log($scope.items);
+				$scope.addItem = undefined;
+				$scope.tabOver(1);
+				});
+			});
+			$scope.error_message = null;
+		}
+		else {
 			console.log("Item is filled");
-			$scope.error_message = "";
-			if(!$scope.addItem.image) {
-				$scope.addItem.image = "https://media.giphy.com/media/ktvFa67wmjDEI/giphy.gif";
-			}
-				console.log("no errors");
-				$scope.addItem._user = $rootScope.currentuser_id;
-				$scope.addItem.count = 0;
-				businessFactory.addItem($scope.addItem, function() {
-					console.log("Successfully saved an Item");
-					businessFactory.getItems(function(output) {
+			console.log("no errors");
+			$scope.addItem._user = $rootScope.currentuser_id;
+			$scope.addItem.count = 0;
+			businessFactory.addItem($scope.addItem, function() {
+				console.log("Successfully saved an Item");
+				businessFactory.getItems(function(output) {
 				    $scope.items = output;
 				    console.log($scope.items);
 					$scope.addItem = undefined;
 					$scope.tabOver(1);
-					});
 				});
-			
-		}
+			});
+			$scope.error_message = null;
+		};
+
 	};
 	businessFactory.getItems(function(output) {
 	    $scope.items = output;
@@ -72,9 +89,9 @@ myApp.controller('businessController', ['$scope', '$location', '$rootScope', '$c
 		businessFactory.increaseCount(id, function(output) {
 			console.log("Successfully increase count by one");
 			businessFactory.getItems(function(output) {
-	    	$scope.items = output;
-	    	console.log($scope.items);
-	});
+		    	$scope.items = output;
+		    	console.log($scope.items);
+			});
 		});
 	};
 
