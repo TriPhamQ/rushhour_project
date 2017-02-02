@@ -13,6 +13,10 @@ myApp.controller('mapsController', function($scope, mapFactory){
 			}
 			else {
 				console.log("false");
+                $scope.local.latitude = 34.019015;
+                $scope.local.longitude = -118.490112;
+                console.log('browser location support not available');
+                mapFactory.refresh($scope.local.latitude, $scope.local.longitude);
 			}
     	})
     } else {
