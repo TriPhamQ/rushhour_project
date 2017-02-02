@@ -101,7 +101,7 @@ module.exports = (function() {
                 } else {
                     Data.remove({_product_id: req.body.id}, function (err) {
                         if (!err) {
-                            Item.find({}, function(err, result) {
+                            Item.find({_user: req.body.userid}, function(err, result) {
                                 if(err) {
                                     console.log("========== error finding item ==========");
                                     console.log(err);

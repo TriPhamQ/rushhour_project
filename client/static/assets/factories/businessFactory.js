@@ -17,8 +17,8 @@ myApp.factory('businessFactory', ['$http', '$cookies', '$rootScope', function ($
             callback(output);
         });
     };
-    factory.deleteItem = function(data, callback) {
-        $http.post('/items/delete', {id: data}).then(function(output) {
+    factory.deleteItem = function(data, id, callback) {
+        $http.post('/items/delete', {id: data, userid: id}).then(function(output) {
             console.log(output);
             callback(output);
         });

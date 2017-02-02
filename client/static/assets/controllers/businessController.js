@@ -99,7 +99,7 @@ myApp.controller('businessController', ['$scope', '$location', '$rootScope', '$c
 	// delete an item
 	$scope.delete = function(id) {
 		console.log(id);
-		businessFactory.deleteItem(id, function(output) {
+		businessFactory.deleteItem(id, $rootScope.currentuser_id, function(output) {
 			console.log(output);
 			$scope.items = output.data;
 		});
