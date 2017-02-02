@@ -41,13 +41,12 @@
 					<a href="#" class="brand-logo center">Rush Hour</a>
 					<ul class="left">
 						<li><a href="#!/">Home</a></li>
-						<li><a href="#!/dashboard">Dashboard</a></li>
 						<li ng-show="currentuser"><a href="#!/businessDash">Business Dashboard</a></li>
 					</ul>
 					<ul class="right">
 						<li ng-show="!currentuser"><a href="#!/log-in">Business Login</a></li>
 						<li ng-show="currentuser"><a href="">Welcome, {{currentuser}}!</a></li>
-						<li><a href="" ng-click="logOut()">Logout</a></li>
+						<li><a href="" ng-click="logOut()" ng-show="currentuser">Logout</a></li>
 					</ul>
 				</div>
 			</nav>
