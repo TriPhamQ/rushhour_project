@@ -3,9 +3,12 @@
 }
 .all-items p {
     text-align: center;
+    color: white;
+    font-size: 16px;
 }
 .all-items button {
     margin-left: 10px;
+    color: #EE6E73;
 }
 .all-items img {
     width: 200px;
@@ -19,7 +22,36 @@
 }
 .error-message {
     color: red;
+    text-align: center;
 }
 .tabs{
     text-align: center;
+}
+html {
+    background: url(https://images4.alphacoders.com/594/594600.jpg);
+    background-size: cover;
+}
+.tabs .indicator {
+    background-color: white !important;
+}
+.input-field label {
+    color: white;
+}
+.input-field {
+    color: white;
+}
+#NewItem label{
+    color: white;
+}
+#NewItem .input-field input:focus {
+    border-bottom: 1px solid white !important;
+}
+h3 {
+    color: white;
+}
+p {
+    color: white;
+}
+h4 {
+    color: white;
 }
