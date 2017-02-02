@@ -1,31 +1,65 @@
 myApp.controller('graphController', ['$scope', '$location', '$rootScope', '$cookies', 'graphFactory',  function ($scope, $location, $rootScope, $cookies, graphFactory){
 	$rootScope.labels = [];
 	$rootScope.series = [];
-	$rootScope.data = [[]];
+	$rootScope.data = [];
+
 
 	$scope.getdata = function () {
 		graphFactory.getData(function(output){
-			console.log('output');
-			var len = output.data.length;
-			console.log(output.data);
-			for (var i = 0; i < len; i++){
-				var leng = output.data[i].count_time.length;
-				$rootScope.series.push(output.data[i]._id);
-				var timez = new Date(output.data[i].createdAt);
-				console.log("Seconds",timez.getSeconds());
-				console.log("Hours",timez.getHours());
-				console.log("Minutes",timez.getMinutes());
-				console.log(output.data[i].createdAt);
-				for (var j = 0; j < leng; j++){
-					$rootScope.labels.push(output.data[i].count_time[j]);
-					$rootScope.data[0].push(j+1);
-				}
-			}
-			// console.log('labels');
-			// console.log($scope.labels);
-			// console.log($scope.series);
+			$scope.test = output.data[0];
 		})
 	};
+	window.onload = function () {
+		// graphFactory.getData(function(output){
+			var dps = []; // dataPoints
+
+			var chart = new CanvasJS.Chart("chartContainer",{
+				title :{
+					text: "Live Random Data"
+				},
+				data: [{
+					type: "line",
+					dataPoints: dps
+				}]
+			});
+			var xVal = (new Date($scope.test.count_time[0])).getSeconds()+(new Date($scope.test.count_time[0])).getHours()*60*60+(new Date($scope.test.count_time[0])).getMinutes()*60;
+			var yVal = 0;
+			// var count = 0;
+			var updateInterval = 100;
+			var dataLength = 500; // number of dataPoints visible at any point
+
+			var updateChart = function (count) {
+				count = count || 1;
+				// count is number of times loop runs to generate random dataPoints.
+				for (var j = 0; j < count; j++) {
+					for (var i = 0; i < $scope.test.count_time.length; i++) {
+						if ((new Date($scope.test.count_time[i])).getSeconds()+(new Date($scope.test.count_time[i])).getHours()*60*60+(new Date($scope.test.count_time[i])).getMinutes()*60 == xVal) {
+							yVal ++;
+						};
+					};
+					// yVal = yVal +  Math.round(5 + Math.random() *(-5-5));
+					dps.push({
+						x: xVal,
+						y: yVal
+					});
+					xVal++;
+				};
+				if (dps.length > dataLength)
+				{
+					dps.shift();
+				}
+
+				chart.render();
+
+			};
+
+			// generates first set of dataPoints
+			updateChart(dataLength);
+
+			// update chart after specified time.
+			setInterval(function(){updateChart()}, updateInterval);
+		// })
+	}
 	$scope.getdata();
 
 
