@@ -1,7 +1,7 @@
 myApp.controller('businessController', ['$scope', '$location', '$rootScope', '$cookies', 'businessFactory', 'graphFactory', function ($scope, $location, $rootScope, $cookies, businessFactory, graphFactory){
 
 	console.log('businessController');
-
+	var socket = io.connect();
 	$scope.sales = true;
 	$scope.create = null;
 	$scope.performance = null;
@@ -88,37 +88,18 @@ myApp.controller('businessController', ['$scope', '$location', '$rootScope', '$c
 	$scope.addCount = function(id) {
 		businessFactory.increaseCount(id, function(output) {
 			console.log("Successfully increase count by one");
+
+			socket.emit('count', {item:id});
+
 			businessFactory.getItems(function(output) {
+		    	
 		    	$scope.items = output;
 		    	console.log($scope.items);
+
 			});
-			// CHANGE THIS PART AFTER FINALIZED THE GRAPH~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-			graphFactory.getData(function(output){
-				$rootScope.labels = [];
-				$rootScope.series = [];
-				$rootScope.data = [[]];
-				console.log('output');
-				var len = output.data.length;
-				console.log(output.data);
-				for (var i = 0; i < len; i++){
-					var leng = output.data[i].count_time.length;
-					$rootScope.series.push(output.data[i]._id);
-					var timez = new Date(output.data[i].createdAt);
-					console.log("Seconds",timez.getSeconds());
-					console.log("Hours",timez.getHours());
-					console.log("Minutes",timez.getMinutes());
-					console.log(output.data[i].createdAt);
-					for (var j = 0; j < leng; j++){
-						$rootScope.labels.push(output.data[i].count_time[j]);
-						$rootScope.data[0].push(j+1);
-					};
-				};
-				// console.log('labels');
-				// console.log($scope.labels);
-				// console.log($scope.series);
-			// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 		});
-		});
+
 	};
 
 	// delete an item

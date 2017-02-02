@@ -24,5 +24,9 @@ var io = require('socket.io').listen(server);
 
 io.sockets.on('connection', function(socket){
 	console.log('sockets on');
-	console.log(socket.id);
+
+	socket.on('count', function(data){
+		console.log('COUNTING');
+		io.emit('COUNT_INCREASED', {package:data.item});
+	});
 });

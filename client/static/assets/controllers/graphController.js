@@ -2,6 +2,10 @@ myApp.controller('graphController', ['$scope', '$location', '$rootScope', '$cook
 	$rootScope.labels = [];
 	$rootScope.series = [];
 	$rootScope.data = [[]];
+	var socket = io.connect();
+	socket.on('COUNT_INCREASED', function(data){
+    	$scope.getdata();
+    })
 
 	$scope.getdata = function () {
 		graphFactory.getData(function(output){
