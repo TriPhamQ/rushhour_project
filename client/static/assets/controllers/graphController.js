@@ -67,9 +67,10 @@ myApp.controller('graphController', ['$scope', '$location', '$rootScope', '$cook
 		graphFactory.getData($rootScope.currentuser_id, function(output){
 			console.log("DATA OUTPUT", output.data);
 			$scope.test = output.data[0];
+			load();
 		})
 	};
-	window.onload = function () {
+	function load() {
 		// graphFactory.getData(function(output){
 			var dps = []; // dataPoints
 			console.log("TEST SCOPE",$scope.test);
@@ -128,7 +129,6 @@ myApp.controller('graphController', ['$scope', '$location', '$rootScope', '$cook
 		// })
 	}
 	$scope.getdata();
-
 
 	$scope.GraphClick = function (points, evt) {
 	// console.log(points, evt);
