@@ -7,10 +7,13 @@ var Data = mongoose.model('gData');
 
 module.exports = (function() {
     return {
-        
+
 
         getData:function(req, res){
-            Data.find({}, function(err, allData){
+            // Data.find({}).populate('_product_id').exec(function (err, results) {
+            //     console.log("RESSSSSSSSSSSSSSSSS", results);
+            // })
+            Data.find({_user: req.body.userid}, function(err, allData){
                 if (!err){
                     res.json(allData);
                 } else {
@@ -20,7 +23,7 @@ module.exports = (function() {
             })
         }
 
-        
+
         }
 
 })();

@@ -7,8 +7,8 @@ myApp.factory('businessFactory', ['$http', '$cookies', '$rootScope', function ($
             callback();
         });
     };
-    factory.getItems = function(callback){
-        $http.get('/getItem').then(function(output){
+    factory.getItems = function(id, callback){
+        $http.post('/getItem', {userid: id}).then(function(output){
             callback(output.data);
         });
     };

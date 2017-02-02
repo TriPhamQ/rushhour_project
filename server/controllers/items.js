@@ -19,7 +19,7 @@ module.exports = (function() {
                 console.log(err);
                 console.log("========== error adding a new item ==========");
             } else {
-                var graphPoint = new Data({_product_id:item._id, count_time:[]});
+                var graphPoint = new Data({_product_id:item._id, count_time:[], _user: req.body._user});
                 graphPoint.save(function(err){
                     if (!err){
                         console.log('graphPoint saved');
@@ -34,7 +34,7 @@ module.exports = (function() {
         },
         getItems: function(req, res) {
             console.log("========== getting items ==============")
-            Item.find({}, function(err, result) {
+            Item.find({_user: req.body.userid}, function(err, result) {
                 if(err) {
                     console.log("========== error finding item ==========");
                     console.log(err);

@@ -4,8 +4,8 @@ var Schema = mongoose.Schema;
 var gDataSchema = new mongoose.Schema({
 
 	_product_id:{type:Schema.Types.ObjectId, ref: 'Item'},
-	count_time:Array
-
+	count_time:Array,
+	_user: {type:Schema.Types.ObjectId, ref: 'User'}
 }, {timestamps:true});
 
 mongoose.model('gData', gDataSchema);

@@ -4,8 +4,8 @@ myApp.factory('graphFactory', ['$http', '$cookies', '$rootScope', function ($htt
 
 
 
-    factory.getData = function(callback){
-        $http.get('/get_data').then(function(output){
+    factory.getData = function(id, callback){
+        $http.post('/get_data', {userid: id}).then(function(output){
             callback(output);
         });
     };

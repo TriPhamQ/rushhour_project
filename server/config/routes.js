@@ -23,7 +23,7 @@ module.exports = function(app){
     app.post('/add', function(req, res) {
         items.addItem(req, res);
     });
-    app.get('/getItem', function(req, res) {
+    app.post('/getItem', function(req, res) {
         items.getItems(req, res);
     });
     app.post('/increase', function(req, res) {
@@ -32,7 +32,7 @@ module.exports = function(app){
     app.post('/items/delete', function(req, res) {
         items.deleteItem(req, res);
     });
-    app.get('/get_data', function(req, res){
+    app.post('/get_data', function(req, res){
         graph.getData(req, res);
     })
 };
