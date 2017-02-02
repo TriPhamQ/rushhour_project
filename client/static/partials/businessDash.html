@@ -23,7 +23,8 @@
 	<div class="all-items">
 	    <div class="the-items" ng-if="items" ng-repeat="i in items">
 	        <img ng-src="{{i.image}}" ng-click="addCount(i._id)">
-	        <p>{{i.item}} <button ng-click="delete(i._id)">&times;</button><p>
+            <p>{{i.item}} <button mw-confirm-click="delete(i._id)">&times;</button><p>
+	        <!-- <p>{{i.item}} <button ng-click="delete(i._id)">&times;</button><p> -->
 	    </div>
 	</div>
 </div>

@@ -41,6 +41,24 @@ myApp.directive('ngEnter', function() {
         };
     });
 
+
+myApp.directive( "mwConfirmClick", [
+	function() {
+		return {
+			priority: -1,
+			restrict: 'A',
+			scope: { confirmFunction: "&mwConfirmClick"},
+			link: function(scope, element, attrs) {
+				element.bind( 'click', function(e) {
+					var message = attrs.mwConfirmClickMessage ? attrs.mwConfirmClickMess : "Are you sure you want to delete this item?";
+					if( confirm(message)) {
+						scope.confirmFunction();
+					}
+				});
+			}
+		}
+	}
+]);
 // myApp.config(function(uiGmapGoogleMapApiProviders){
 // 	uiGmapGoogleMapApiProviders.configure({
 // 		key: 'AIzaSyCipGKNRqwoj-UbQ3eJbYy5rCHeRE2vjNE',
