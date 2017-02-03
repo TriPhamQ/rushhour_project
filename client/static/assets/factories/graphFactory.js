@@ -11,6 +11,20 @@ myApp.factory('graphFactory', ['$http', '$cookies', '$rootScope', function ($htt
     };
 
 
+    factory.showBusy = function(callback){
+    	$http.post('/show_busy', {userid:$rootScope.currentuser}).then(function(){
+	    	console.log('nice');
+	    	callback();
+   		});
+    };
+
+    factory.notBusy = function(callback){
+    	$http.post('/not_busy', {userid:$rootScope.currentuser}).then(function(){
+    		callback();
+    	})
+    }
+
+
     return factory;
 
 }]);

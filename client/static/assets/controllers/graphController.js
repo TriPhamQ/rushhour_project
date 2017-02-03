@@ -30,11 +30,15 @@ myApp.controller('graphController', ['$scope', '$location', '$rootScope', '$cook
 
 		if (x == 1){
 			console.log("SOCKET SENT UP!!!!!!!!");
-			socket.emit('up', {local:$rootScope.currentuser});
+			graphFactory.showBusy(function(){
+				socket.emit('up', {local:$rootScope.currentuser});
+			});
 		}
 		if (y == 1){
 			console.log("SOCKET SENT DOWN!!!!!!!!");
-			socket.emit('down', {local:$rootScope.currentuser});
+			graphFactory.notBusy(function(){
+				socket.emit('down', {local:$rootScope.currentuser});
+			});
 		}
 	}
 

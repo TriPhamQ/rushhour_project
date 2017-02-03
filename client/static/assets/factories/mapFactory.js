@@ -16,6 +16,8 @@ myApp.factory('mapFactory', ['$http', function ($http) {
 		selectedLat = lat;
 		selectedLong = long;
 
+		getBusy();
+
 		$http.get('/markers').then(function(output){
 			console.log('happening');
 			locations = convertToMapPoints(output.data);
@@ -106,6 +108,13 @@ myApp.factory('mapFactory', ['$http', function ($http) {
 				n.message.open(map, marker);
 			});
 		});
+	}
+
+
+	var getBusy = function(){
+		$http.get('/get_busy').then(function(output){
+			console.log(output);
+		})
 	}
 
 
