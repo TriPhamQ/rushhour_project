@@ -30,21 +30,22 @@
 html {
     background: url(https://images4.alphacoders.com/594/594600.jpg);
     background-size: cover;
+    background-repeat: no-repeat;
 }
 .tabs .indicator {
     background-color: white !important;
 }
-.input-field label {
-    color: white;
-}
 .input-field {
-    color: white;
-}
-#NewItem label{
     color: white;
 }
 #NewItem .input-field input:focus {
     border-bottom: 1px solid white !important;
+}
+#NewItem button{
+    margin-top: 10px;
+}
+#map {
+    margin-top: 100px;
 }
 h3 {
     color: white;
@@ -54,4 +55,13 @@ p {
 }
 h4 {
     color: white;
+}
+.row .input-field input:focus {
+    border-bottom: 1px solid white !important;
+}
+#regCard {
+    margin-top: 50px;
+}
+#AllItems {
+    text-align: center;
 }
