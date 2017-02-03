@@ -29,4 +29,13 @@ io.sockets.on('connection', function(socket){
 		console.log('COUNTING');
 		io.emit('COUNT_INCREASED', {package:data.item});
 	});
+
+	socket.on('up', function(data){
+		console.log('up from: ', data.local);
+		io.emit('mapUp', {data:data.local})
+	})
+
+	socket.on('down', function(data){
+		console.log("####################\n", data);
+	})
 });

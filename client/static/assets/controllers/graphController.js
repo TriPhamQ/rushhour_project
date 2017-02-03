@@ -41,6 +41,10 @@ myApp.controller('graphController', ['$scope', '$location', '$rootScope', '$cook
 					for (var i = 0; i < $scope.test.count_time.length; i++) {
 						if ((new Date($scope.test.count_time[i])).getSeconds()+(new Date($scope.test.count_time[i])).getHours()*60*60+(new Date($scope.test.count_time[i])).getMinutes()*60 == xVal) {
 							yVal ++;
+							console.log(yVal);
+							if (yVal > 5){
+								socket.emit('up', {local:$rootScope.currentuser_id});
+							}
 						}
 					};
 					// console.log("countT", countT);
@@ -48,6 +52,7 @@ myApp.controller('graphController', ['$scope', '$location', '$rootScope', '$cook
 						yVal = 0;
 						countT = 0;
 						// sockethere~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+						socket.emit('down', {local:$rootScope.currentuser_id});
 					};
 					// yVal = yVal +  Math.round(5 + Math.random() *(-5-5));
 					dps.push({

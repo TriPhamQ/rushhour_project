@@ -1,4 +1,8 @@
 myApp.factory('mapFactory', ['$http', function ($http) {
+	var socket = io.connect();
+    socket.on('mapUp', function(data){
+        console.log('Map Factory: ', data);
+    })
 
 	factory = {};
 

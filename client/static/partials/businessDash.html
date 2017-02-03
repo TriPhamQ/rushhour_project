@@ -33,12 +33,12 @@
 </div>
 
 <div id="STATS" ng-show="performance" ng-controller="graphController">
-	<h1>Performance Graph</h1>
-	<canvas id="line" class="chart chart-line"
-	  chart-data="data" chart-labels="labels" chart-series="series" chart-options="options" chart-dataset-override="datasetOverride" chart-click="GraphClick()">
-	</canvas>
+
     <!-- ====================================================================== -->
     <div id="chartContainer" style="height: 300px; width:100%;">
+        <canvas id="line" class="chart chart-line"
+      chart-data="data" chart-labels="labels" chart-series="series" chart-options="options" chart-dataset-override="datasetOverride" chart-click="GraphClick()">
+    </canvas>
 	</div>
     <!-- =================================================================================================== -->
 </div>
