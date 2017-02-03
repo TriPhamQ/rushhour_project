@@ -123,7 +123,7 @@ module.exports = (function() {
         },
         showBusy:function(req, res){
             console.log(req.body, 'busy item');
-            User.findOne({name:req.body.userid}, function(err, theUser){
+            User.findOne({_id:req.body.userid}, function(err, theUser){
                 if (!err){
                     theUser.busy = true;
                     theUser.save();
@@ -134,7 +134,7 @@ module.exports = (function() {
         },
         notBusy:function(req, res){
             console.log(req.body, 'busy item');
-            User.findOne({name:req.body.userid}, function(err, theUser){
+            User.findOne({_id:req.body.userid}, function(err, theUser){
                 if (!err){
                     theUser.busy = false;
                     theUser.save();

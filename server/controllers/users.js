@@ -20,6 +20,7 @@ module.exports = (function () {
 				else {
 					console.log("No user found. Start creating...");
 					req.body.password = bcrypt.hashSync(req.body.password, bcrypt.genSaltSync(8));
+					req.body.busy = false;
 					User.create(req.body, function (err, results) {
 						if (err) {
 							console.log(err);

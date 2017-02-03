@@ -32,19 +32,21 @@ myApp.controller('graphController', ['$scope', '$location', '$rootScope', '$cook
 			console.log("SOCKET SENT UP!!!!!!!!");
 			graphFactory.showBusy(function(){
 				socket.emit('up', {local:$rootScope.currentuser});
+				x=0;
 			});
 		}
-		if (y == 1){
+		else if (y == 1){
 			console.log("SOCKET SENT DOWN!!!!!!!!");
 			graphFactory.notBusy(function(){
 				socket.emit('down', {local:$rootScope.currentuser});
+				y=0;
 			});
 		}
 	}
 
 
 
-	
+
 	socket.on('COUNT_INCREASED', function(data){
 		console.log('this is the fuckin problem');
 		$scope.getdata();
@@ -70,30 +72,30 @@ myApp.controller('graphController', ['$scope', '$location', '$rootScope', '$cook
 				}]
 			});
 			// var xVal = (new Date($scope.test.count_time[0])).getSeconds()+(new Date($scope.test.count_time[0])).getHours()*60*60+(new Date($scope.test.count_time[0])).getMinutes()*60;
-			var xVal = (new Date().getHours())*60*60+(new Date().getMinutes())*60+(new Date().getSeconds())-5*60;
+			var xVal = (new Date().getHours())*60*60+(new Date().getMinutes())*60+(new Date().getSeconds())-60;
 			var yVal = 0;
 			// var countT = 0;
 			var updateInterval = 1000;
-			var dataLength = 300; // number of dataPoints visible at any point
+			var dataLength = 60; // number of dataPoints visible at any point
 
 			var updateChart = function (count) {
 				count = count || 1;
-				var countT = 0;
+				// var countT = 0;
 				// count is number of times loop runs to generate random dataPoints.
 				for (var j = 0; j < count; j++) {
 					for (var i = 0; i < $scope.test.count_time.length; i++) {
 						if ((new Date($scope.test.count_time[i])).getSeconds()+(new Date($scope.test.count_time[i])).getHours()*60*60+(new Date($scope.test.count_time[i])).getMinutes()*60 == xVal) {
 							yVal ++;
-							if (yVal > 5){
+							if (yVal == 5){
 								console.log('SOCKET CONTROL WITH 11111111');
 								$scope.socketControl(1);
 							}
 						}
 					};
 					// console.log("countT", countT);
-					if (xVal%100 == 0) {
+					if (xVal%60 == 0) {
 						yVal = 0;
-						countT = 0;
+						// countT = 0;
 						// sockethere~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 						console.log('SOCKET CONTROL WITH 0000000');
 						$scope.socketControl(0);
@@ -103,7 +105,7 @@ myApp.controller('graphController', ['$scope', '$location', '$rootScope', '$cook
 						x: xVal,
 						y: yVal
 					});
-					countT ++;
+					// countT ++;
 					xVal ++;
 				};
 				if (dps.length > dataLength)
