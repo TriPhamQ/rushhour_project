@@ -4,6 +4,7 @@ var mongoose = require('mongoose');
 // Require the model and save it in a variable
 var Item = mongoose.model('Item');
 var Data = mongoose.model('gData');
+var User = mongoose.model('User');
 
 module.exports = (function() {
     return {
@@ -13,6 +14,7 @@ module.exports = (function() {
             console.log("========== adding a new item ==========");
 
             var item = new Item(req.body);
+            item.busy = false;
             item.save(function(err){
             if(err){
                 console.log("========== error adding a new item ==========");
@@ -118,6 +120,34 @@ module.exports = (function() {
                     })
                 }
             });
+        },
+        showBusy:function(req, res){
+            console.log(req.body, 'busy item');
+            User.findOne({name:req.body.userid}, function(err, theUser){
+                if (!err){
+                    theUser.busy = true;
+                    theUser.save();
+                    console.log(theUser);
+                    res.json({});
+                }
+            })
+        },
+        notBusy:function(req, res){
+            console.log(req.body, 'busy item');
+            User.findOne({name:req.body.userid}, function(err, theUser){
+                if (!err){
+                    theUser.busy = false;
+                    theUser.save();
+                    console.log(theUser);
+                    res.json({});
+                }
+            })
+        },
+        getBusy:function(req, res){
+            User.find({busy:true}, function(err, theUsers){
+                console.log(theUsers, '*************************');
+                res.json(theUsers);
+            })
         }
     }
 

@@ -34,5 +34,14 @@ module.exports = function(app){
     });
     app.post('/get_data', function(req, res){
         graph.getData(req, res);
-    })
+    });
+    app.post('/show_busy', function(req, res) {
+        items.showBusy(req, res);
+    });
+    app.post('/not_busy', function(req, res){
+        items.notBusy(req, res);
+    });
+    app.get('/get_busy', function(req, res){
+        items.getBusy(req, res);
+    });
 };

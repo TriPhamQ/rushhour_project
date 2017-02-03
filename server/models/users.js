@@ -33,6 +33,7 @@ var UserSchema = new mongoose.Schema({
 	},
 	items: {type: Schema.Types.ObjectId, ref: 'Item'},
 	graphs: {type:Schema.Types.ObjectId, ref: 'gData'},
+	busy:Boolean
 }, {timestamps: true});
 
 mongoose.model('User', UserSchema);
