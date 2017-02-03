@@ -7,6 +7,7 @@ var ItemSchema = new mongoose.Schema({
     item: {type: String, required: true},
     image: {type: String},
     count: {type: Number},
+    busy:Boolean,
     _user: {type: Schema.Types.ObjectId, ref: 'User'},
 }, {timestamps: true});
 
