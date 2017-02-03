@@ -28,9 +28,11 @@
     text-align: center;
 }
 html {
-    background: url(https://images4.alphacoders.com/594/594600.jpg);
-    background-size: cover;
-    background-repeat: no-repeat;
+    background: url(https://images4.alphacoders.com/594/594600.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
 }
 .tabs .indicator {
     background-color: white !important;
@@ -45,7 +47,8 @@ html {
     margin-top: 10px;
 }
 #map {
-    margin-top: 100px;
+    margin-top: 75px;
+    margin-bottom: 100px;
 }
 h3 {
     color: white;
