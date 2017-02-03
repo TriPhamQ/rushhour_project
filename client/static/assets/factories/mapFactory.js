@@ -64,7 +64,7 @@ myApp.factory('mapFactory', ['$http', function ($http) {
 				position: n.latlon,
 				map: map,
 				title: "Rush Hour Map",
-				icon: '',
+				icon: 'http://www.googlemapsmarkers.com/v1/0000FF/',
 			});
 
 			google.maps.event.addListener(marker, 'click', function(e){
@@ -81,6 +81,8 @@ myApp.factory('mapFactory', ['$http', function ($http) {
 			icon: ''
 		});
 		lastMarker = marker;
+		// Place a draggable marker on the map
+
 
 	};
 
