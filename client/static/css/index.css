@@ -41,6 +41,12 @@ html {
 #NewItem .input-field input:focus {
     border-bottom: 1px solid white !important;
 }
+#NewItem button{
+    margin-top: 10px;
+}
+#map {
+    margin-top: 100px;
+}
 h3 {
     color: white;
 }
