@@ -3,8 +3,6 @@ myApp.factory('mapFactory', ['$http', function ($http) {
 
 	factory = {};
 
-	var map;
-
 	var locations = [];
 	var busiest = [];
 	var selectedLat = null;
@@ -17,7 +15,6 @@ myApp.factory('mapFactory', ['$http', function ($http) {
 		selectedLong = long;
 
 		$http.get('/markers').then(function(output){
-			console.log('happening');
 			locations = convertToMapPoints(output.data);
 			initialize(lat, long);
 		});
@@ -53,29 +50,13 @@ myApp.factory('mapFactory', ['$http', function ($http) {
 		var myLatLng = {lat: selectedLat, lng: selectedLong};
 
 		if (!map){
-			map = new google.maps.Map(document.getElementById('map'), {
+			var map = new google.maps.Map(document.getElementById('map'), {
 				zoom: 1,
 				center: myLatLng
 			});
 		}
 
-		updateMarkers();
-
-		var initalLocation = new google.maps.LatLng(lat, long);
-		var marker = new google.maps.Marker({
-			position: initalLocation,
-			animation: google.maps.Animation.Bounce,
-			map: map,
-			icon: ''
-		});
-		lastMarker = marker;
-		// Place a draggable marker on the map
-
-
-	};
-
-	var updateMarkers = function(){
-				locations.forEach(function(n, i){
+		locations.forEach(function(n, i){
 			console.log('N is : ', n.username);
 			var flag = 0;
 			for (var cat = 0; cat < busiest.length; cat++){
@@ -106,14 +87,26 @@ myApp.factory('mapFactory', ['$http', function ($http) {
 				n.message.open(map, marker);
 			});
 		});
-	}
+
+		var initalLocation = new google.maps.LatLng(lat, long);
+		var marker = new google.maps.Marker({
+			position: initalLocation,
+			animation: google.maps.Animation.Bounce,
+			map: map,
+			icon: ''
+		});
+		lastMarker = marker;
+		// Place a draggable marker on the map
+
+
+	};
 
 
 	var socket = io.connect();
     socket.on('mapUp', function(data){
         console.log('these are the locations', data.data.local);
         busiest.push(data.data.local);
-        updateMarkers();
+        initialize(selectedLat, selectedLong);
     })
     socket.on('mapDown', function(data){
         console.log('locations not busy', data);
@@ -125,7 +118,7 @@ myApp.factory('mapFactory', ['$http', function ($http) {
         	}
         }
         busiest.splice(x, 1);
-        updateMarkers();
+        initialize(selectedLat, selectedLong);
     })
 
 	// google.maps.event.addDomListener(window, 'load',
