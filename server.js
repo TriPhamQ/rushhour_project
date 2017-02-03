@@ -20,22 +20,28 @@ var server = app.listen(port, function () {
 	console.log("Listening on port", port);
 });
 
+
+var count = 0;
+
 var io = require('socket.io').listen(server);
 
 io.sockets.on('connection', function(socket){
 	console.log('sockets on');
 
 	socket.on('count', function(data){
-		console.log('COUNTING');
+		count += 1;
+		console.log('@@@@@@@', count, '@@@@@@@');
 		io.emit('COUNT_INCREASED', {package:data.item});
 	});
 
 	socket.on('up', function(data){
-		console.log('up from: ', data.local);
-		io.emit('mapUp', {data:data.local})
-	})
+		console.log('$$$$$$$$$$$$', count, '$$$$$$$');
+		io.emit('mapUp', {data:data});
+	});
 
 	socket.on('down', function(data){
-		console.log("####################\n", data);
+		count = 0;
+		console.log("####################\n", data, '\n', count);
+		io.emit('mapDown', {data:data});
 	})
 });

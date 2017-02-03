@@ -3,7 +3,46 @@ myApp.controller('graphController', ['$scope', '$location', '$rootScope', '$cook
 	$rootScope.series = [];
 	$rootScope.data = [[]];
 	var socket = io.connect();
+
+	// $scope.socketControl = function(input){
+	// 	var x;
+	// 	if (input == 0){
+	// 		x = 0;
+	// 		socket.emit('down', {local:$rootScope.currentuser_id});
+	// 	} else if (input != 0){
+	// 		x += input;
+	// 	}
+	// 	if (x < 2 && x != 0){
+	// 			socket.emit('up', {local:$rootScope.currentuser_id});
+	// 		}
+	// }
+
+	var x = 0;
+	var y = 0;
+	$scope.socketControl = function(input){
+		if (input === 1){
+			x += 1;
+			y = 0;
+		} else if (input === 0){
+			y += 1;
+			x = 0;
+		}
+
+		if (x == 1){
+			console.log("SOCKET SENT UP!!!!!!!!");
+			socket.emit('up', {local:$rootScope.currentuser});
+		}
+		if (y == 1){
+			console.log("SOCKET SENT DOWN!!!!!!!!");
+			socket.emit('down', {local:$rootScope.currentuser});
+		}
+	}
+
+
+
+	
 	socket.on('COUNT_INCREASED', function(data){
+		console.log('this is the fuckin problem');
 		$scope.getdata();
 	})
 	$scope.getdata = function () {
@@ -41,9 +80,9 @@ myApp.controller('graphController', ['$scope', '$location', '$rootScope', '$cook
 					for (var i = 0; i < $scope.test.count_time.length; i++) {
 						if ((new Date($scope.test.count_time[i])).getSeconds()+(new Date($scope.test.count_time[i])).getHours()*60*60+(new Date($scope.test.count_time[i])).getMinutes()*60 == xVal) {
 							yVal ++;
-							console.log(yVal);
 							if (yVal > 5){
-								socket.emit('up', {local:$rootScope.currentuser_id});
+								console.log('SOCKET CONTROL WITH 11111111');
+								$scope.socketControl(1);
 							}
 						}
 					};
@@ -52,7 +91,8 @@ myApp.controller('graphController', ['$scope', '$location', '$rootScope', '$cook
 						yVal = 0;
 						countT = 0;
 						// sockethere~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-						socket.emit('down', {local:$rootScope.currentuser_id});
+						console.log('SOCKET CONTROL WITH 0000000');
+						$scope.socketControl(0);
 					};
 					// yVal = yVal +  Math.round(5 + Math.random() *(-5-5));
 					dps.push({
