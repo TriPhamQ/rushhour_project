@@ -113,7 +113,11 @@ myApp.factory('mapFactory', ['$http', function ($http) {
 
 	var getBusy = function(){
 		$http.get('/get_busy').then(function(output){
-			console.log(output);
+			console.log(output,'*********');
+			for (var i = 0; i < output.data.length; i++){
+				console.log(output.data[i].name, '&&&&&&&&&&');
+				busiest.push(output.data[i].name);
+			}
 		})
 	}
 
