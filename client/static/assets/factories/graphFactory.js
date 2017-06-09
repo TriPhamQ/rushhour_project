@@ -2,14 +2,11 @@ myApp.factory('graphFactory', ['$http', '$cookies', '$rootScope', function ($htt
     console.log("Graph Factory");
     var factory = {};
 
-
-
     factory.getData = function(id, callback){
         $http.post('/get_data', {userid: id}).then(function(output){
             callback(output);
         });
     };
-
 
     factory.showBusy = function(callback){
     	$http.post('/show_busy', {userid:$rootScope.currentuser}).then(function(){
@@ -23,7 +20,6 @@ myApp.factory('graphFactory', ['$http', '$cookies', '$rootScope', function ($htt
     		callback();
     	})
     }
-
 
     return factory;
 

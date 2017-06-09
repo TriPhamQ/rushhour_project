@@ -27,14 +27,14 @@ myApp.controller('businessController', ['$scope', '$location', '$rootScope', '$c
 	$scope.items = [];
 
 	$scope.logOut = function () {
-        $cookies.remove('token');
-        $cookies.remove('currentuser');
-        $cookies.remove('currentuser_id');
-        $rootScope.token = null;
-        $rootScope.currentuser = null;
-        $rootScope.currentuser_id = null;
-        $location.url('/log-in');
-    };
+		$cookies.remove('token');
+		$cookies.remove('currentuser');
+		$cookies.remove('currentuser_id');
+		$rootScope.token = null;
+		$rootScope.currentuser = null;
+		$rootScope.currentuser_id = null;
+		$location.url('/log-in');
+	};
 
 	// the submit button to add an item
 	$scope.submit = function() {
@@ -55,8 +55,8 @@ myApp.controller('businessController', ['$scope', '$location', '$rootScope', '$c
 				businessFactory.getItems($rootScope.currentuser_id, function(output) {
 			    $scope.items = output;
 			    console.log($scope.items);
-				$scope.addItem = undefined;
-				$scope.tabOver(1);
+					$scope.addItem = undefined;
+					$scope.tabOver(1);
 				});
 			});
 			$scope.error_message = null;
@@ -69,8 +69,8 @@ myApp.controller('businessController', ['$scope', '$location', '$rootScope', '$c
 			businessFactory.addItem($scope.addItem, function() {
 				console.log("Successfully saved an Item");
 				businessFactory.getItems($rootScope.currentuser_id, function(output) {
-				    $scope.items = output;
-				    console.log($scope.items);
+					$scope.items = output;
+					console.log($scope.items);
 					$scope.addItem = undefined;
 					$scope.tabOver(1);
 				});
@@ -90,8 +90,8 @@ myApp.controller('businessController', ['$scope', '$location', '$rootScope', '$c
 			console.log("Successfully increase count by one");
 			socket.emit('count', {item:id});
 			businessFactory.getItems($rootScope.currentuser_id, function(output) {
-		    	$scope.items = output;
-		    	console.log($scope.items);
+				$scope.items = output;
+				console.log($scope.items);
 			});
 		});
 	};

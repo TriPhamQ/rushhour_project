@@ -1,6 +1,5 @@
 myApp.controller('mapsController', function($scope, mapFactory){
 
-
 	$scope.local = {};
 
     if (navigator.geolocation){

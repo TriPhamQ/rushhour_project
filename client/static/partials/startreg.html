@@ -1,9 +1,5 @@
-
-
 <div ng-show="nextval.address">
-
       <div class="row">
-
         <div class="col s12 m12">
           <div id="regCard" class="card deep-purple darken-1">
             <div class="card-content white-text">
@@ -22,52 +18,48 @@
           </div>
         </div>
       </div>
-
 </div>
-
-
-      <div class="row" ng-show="nextval.name">
-        <div class="col s12 m12">
-          <div id="regCard" class="card deep-purple darken-1">
-            <div class="card-content white-text">
-              <h5 class="card-title center-align">How would you like the name of your business to appear?</h5>
-                <div class="row">
-                  <form class="col s12">
-                      <div class="input-field col s12">
-                        <input type="text" ng-model="item.name" class="validate" ng-enter="next(item.name)">
-                      </div>
-                  </form>
-              </div>
-            </div>
-            <div class="card-action">
-              <a class="nextpage white-text" href="" ng-click="next(item.name)">Next</a>
-            </div>
-          </div>
+<div class="row" ng-show="nextval.name">
+  <div class="col s12 m12">
+    <div id="regCard" class="card deep-purple darken-1">
+      <div class="card-content white-text">
+        <h5 class="card-title center-align">How would you like the name of your business to appear?</h5>
+          <div class="row">
+            <form class="col s12">
+                <div class="input-field col s12">
+                  <input type="text" ng-model="item.name" class="validate" ng-enter="next(item.name)">
+                </div>
+            </form>
         </div>
       </div>
-
-      <div class="row" ng-show="nextval.user">
-        <div class="col s12 m12">
-          <div id="regCard" class="card deep-purple darken-1">
-            <div class="card-content white-text">
-              <h5 class="card-title center-align">Email &amp; Password</h5>
-                <div class="row">
-                  <form class="col s12">
-                      <div class="input-field col s12">
-                        <input type="email" placeholder="Email" ng-model="newBusiness.email" class="validate">
-                      </div>
-                      <div class="input-field col s12">
-                        <input type="password" placeholder="Password" ng-model="newBusiness.password" class="validate" ng-enter="next(newBusiness)">
-                      </div>
-                      <div class="input-field col s12">
-                        <input type="password" placeholder="Confirm Password" ng-model="newBusiness.password_confirm" class="validate" ng-enter="next(newBusiness)">
-                      </div>
-                  </form>
-              </div>
-            </div>
-            <div class="card-action">
-              <a class="nextpage white-text" href="" ng-click="next(item)">Next</a>
-            </div>
-          </div>
+      <div class="card-action">
+        <a class="nextpage white-text" href="" ng-click="next(item.name)">Next</a>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row" ng-show="nextval.user">
+  <div class="col s12 m12">
+    <div id="regCard" class="card deep-purple darken-1">
+      <div class="card-content white-text">
+        <h5 class="card-title center-align">Email &amp; Password</h5>
+          <div class="row">
+            <form class="col s12">
+                <div class="input-field col s12">
+                  <input type="email" placeholder="Email" ng-model="newBusiness.email" class="validate">
+                </div>
+                <div class="input-field col s12">
+                  <input type="password" placeholder="Password" ng-model="newBusiness.password" class="validate" ng-enter="next(newBusiness)">
+                </div>
+                <div class="input-field col s12">
+                  <input type="password" placeholder="Confirm Password" ng-model="newBusiness.password_confirm" class="validate" ng-enter="next(newBusiness)">
+                </div>
+            </form>
         </div>
       </div>
+      <div class="card-action">
+        <a class="nextpage white-text" href="" ng-click="next(item)">Next</a>
+      </div>
+    </div>
+  </div>
+</div>
